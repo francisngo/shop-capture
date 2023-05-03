@@ -30,7 +30,7 @@ const firebaseConfig = {
 	measurementId: fbConfig.measurementId,
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
