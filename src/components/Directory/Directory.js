@@ -1,13 +1,14 @@
 import DirectoryItem from "../DirectoryItem/DirectoryItem";
-import "./Directory.scss";
+
+import { DirectoryContainer } from "./Directory.styles";
 
 const Directory = ({ categories }) => {
 	return (
-		<div className="directory-container">
+		<DirectoryContainer>
 			{categories.map((category) => (
 				<DirectoryItem key={category.id} category={category} />
 			))}
-		</div>
+		</DirectoryContainer>
 	);
 };
 
