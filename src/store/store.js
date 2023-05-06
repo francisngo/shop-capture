@@ -6,7 +6,9 @@ import {
 import { persistStore, persistReducer } from "redux-persist";
 import logger from "redux-logger";
 import storage from "redux-persist/lib/storage";
+import createSagaMiddleware from "redux-saga";
 
+import { rootSaga } from "./root-saga";
 import { rootReducer } from "./root-reducer";
 
 const persistConfig = {
@@ -15,14 +17,17 @@ const persistConfig = {
 	whitelist: ["cart"],
 };
 
+const sagaMiddleware = createSagaMiddleware();
+
 // TODO - Cart should not persist when user logs out.
 // TODO - Cart should be tied to logged in user
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // only log in development
-const middlewares = [process.env.NODE_ENV !== "production" && logger].filter(
-	Boolean
-);
+const middlewares = [
+	process.env.NODE_ENV !== "production" && logger,
+	sagaMiddleware,
+].filter(Boolean);
 
 const composeEnhancer =
 	(process.env.NODE_ENV !== "production" &&
@@ -37,5 +42,7 @@ export const store = createStore(
 	undefined,
 	composedEnhancers
 );
+
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
