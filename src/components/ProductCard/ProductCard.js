@@ -4,7 +4,7 @@ import { selectCartItems } from "../../store/cart/cart.selector";
 import Button, { BUTTON_TYPES_CLASSES } from "../Button/Button";
 
 import {
-	ProductCartContainer,
+	ProductCardContainer,
 	Footer,
 	Name,
 	Price,
@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
 	const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
 
 	return (
-		<ProductCartContainer>
+		<ProductCardContainer>
 			<img src={`${imageUrl}`} alt={`${name}`} />
 			<Footer>
 				<Name>{name}</Name>
@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
 					Add To Cart
 				</Button>
 			</Footer>
-		</ProductCartContainer>
+		</ProductCardContainer>
 	);
 };
 
