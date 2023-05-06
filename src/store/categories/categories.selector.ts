@@ -1,5 +1,8 @@
 import { createSelector } from "reselect";
 
+import { CategoriesState } from './categories.reducer';
+import { CategoryMap } from './categories.types';
+
 /*
  * selector is where we take the raw data from google firestore,
  * "getCategoriesAndDocuments", and we map it for the redux store
@@ -12,7 +15,7 @@ import { createSelector } from "reselect";
  */
 
 // this triggers whenever there is an update to the state in redux store
-const selectCategoryReducer = (state) => state.categories;
+const selectCategoryReducer = (state: any): CategoriesState => state.categories;
 
 // this triggers when there is a change to categories state in redux store
 export const reselectCategories = createSelector(
@@ -23,11 +26,12 @@ export const reselectCategories = createSelector(
 // this triggers and maps out the categories for the redux store
 export const selectCategories = createSelector(
 	[reselectCategories],
-	(categories) =>
-		categories.reduce((acc, { title, items }) => {
+	(categories): CategoryMap => {
+		return categories.reduce((acc, { title, items }) => {
 			acc[title.toLowerCase()] = items;
 			return acc;
-		}, {})
+		}, {} as CategoryMap);
+	}
 );
 
 export const selectCategoriesIsLoading = createSelector(
