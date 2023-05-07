@@ -6,19 +6,14 @@ import {
 	selectCartTotal,
 } from "../../store/cart/cart.selector";
 
-import {
-	CheckoutContainer,
-	CheckoutHeader,
-	HeaderBlock,
-	Total,
-} from "./Checkout.styles";
+import { CartContainer, CartHeader, HeaderBlock, Total } from "./Cart.styles";
 
 const Checkout = () => {
 	const cartItems = useSelector(selectCartItems);
 	const cartTotal = useSelector(selectCartTotal);
 	return (
-		<CheckoutContainer>
-			<CheckoutHeader>
+		<CartContainer>
+			<CartHeader>
 				<HeaderBlock>
 					<span>Product</span>
 				</HeaderBlock>
@@ -34,12 +29,12 @@ const Checkout = () => {
 				<HeaderBlock>
 					<span>Remove</span>
 				</HeaderBlock>
-			</CheckoutHeader>
+			</CartHeader>
 			{cartItems.map((cartItem) => (
 				<CheckoutItem key={cartItem.id} cartItem={cartItem} />
 			))}
 			<Total>{`Total: $${cartTotal}`}</Total>
-		</CheckoutContainer>
+		</CartContainer>
 	);
 };
 

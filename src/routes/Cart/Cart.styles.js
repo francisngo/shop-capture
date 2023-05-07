@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CheckoutContainer = styled.div`
+export const CartContainer = styled.div`
 	width: 55%;
 	min-height: 90vh;
 	display: flex;
@@ -9,7 +9,7 @@ export const CheckoutContainer = styled.div`
 	margin: 50px auto 0;
 `;
 
-export const CheckoutHeader = styled.div`
+export const CartHeader = styled.div`
 	width: 100%;
 	padding: 10px 0;
 	display: flex;
