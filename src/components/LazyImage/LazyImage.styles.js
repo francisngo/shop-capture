@@ -7,6 +7,8 @@ export const ImageContainer = styled.div`
 	background-position: center;
 	background-image: url("${(props) =>
 		props.$isLoading ? props.loadingUrl : props.imgSrc}");
+	filter: ${(props) => (props.$isLoading ? "blur(5px)" : "")};
+	transition: 1s filter linear;
 
 	&:hover {
 		transform: scale(1.1);

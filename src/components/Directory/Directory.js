@@ -19,7 +19,7 @@ const categories = [
 	{
 		id: 3,
 		title: "Filters",
-		imageUrl: "https://ik.imagekit.io/tdabmi2ex/lenses.jpg",
+		imageUrl: "https://ik.imagekit.io/tdabmi2ex/filters.jpg",
 		loadingUrl: "https://ik.imagekit.io/tdabmi2ex/filters-small.jpg",
 		route: "shop/filters",
 	},
