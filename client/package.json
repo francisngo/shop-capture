@@ -1,5 +1,5 @@
 {
-  "name": "capture",
+  "name": "capture-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
