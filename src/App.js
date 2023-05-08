@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Home from "./routes/Home/Home";
-import Navigation from "./routes/Navigation/Navigation";
+import Navigation from "./components/Navigation/Navigation";
+import Footer from "./components/Footer/Footer";
 import CategoriesPreview from "./routes/CategoriesPreview/CategoriesPreview";
 import Category from "./routes/Category/Category";
 import Authentication from "./routes/Authentication/Authentication";
@@ -14,6 +15,8 @@ const Layout = () => {
 	return (
 		<>
 			<Navigation />
+			<Outlet />
+			<Footer />
 		</>
 	);
 };
