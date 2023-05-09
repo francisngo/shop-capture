@@ -1,11 +1,13 @@
+import path from 'path';
 import admin from 'firebase-admin';
-import * as path from 'path';
+import { gql } from 'graphql-tag';
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const serviceAccount = path.resolve(__dirname, 'config/service-account.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
+const db = admin.firestore();
 
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
@@ -22,7 +24,7 @@ interface Category {
     items: [CategoryItem]
 }
 
-const typeDefs = `#graphql
+const typeDefs = gql`
     type CategoryItem {
         id: Int,
         imageUrl: String,
@@ -37,27 +39,35 @@ const typeDefs = `#graphql
     }
 
     type Query {
-        category(name: String!): Category
+        category(title: String!): Category
         categories: [Category]
     }
 `
 
+
 const resolvers = {
     Query: {
         categories: async () => {
-            const snapshot = await admin 
-                .firestore()
+            const snapshot = await db
                 .collection('categories')
                 .get();
-            return snapshot.docs.map(doc => doc.data()) as Category[];
+            return snapshot.docs.map(doc => {
+                console.log(doc);
+                return doc.data()
+            }) as Category[];
         },
-        category: async (_: any, { name }) => {
-            const doc = await admin 
-                .firestore()
+        category: async (_: any, { title }) => {
+            const snapshot = await db
                 .collection('categories')
-                .doc(name)
+                .where('title', '==', title)
                 .get();
-            return doc.data();
+            if (snapshot.empty) {
+                console.log('No matching documents.');
+                return;
+            }
+            let data;
+            snapshot.forEach(doc => data = doc.data());
+            return data;
         }
     }
 }
