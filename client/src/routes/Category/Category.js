@@ -22,7 +22,7 @@ const CATEGORY = gql`
 const Category = () => {
 	const { category } = useParams();
 	const title = category.charAt(0).toUpperCase() + category.slice(1);
-	const { loading, error, data } = useQuery(CATEGORY, {
+	const { loading, data } = useQuery(CATEGORY, {
 		variables: { title },
 	});
 	const [products, setProducts] = useState([]);
