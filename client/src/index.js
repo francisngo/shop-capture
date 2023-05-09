@@ -1,20 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistor, store } from "./store/store";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { UserProvider } from "./contexts/UserContext";
+import { CategoriesProvider } from "./contexts/CategoriesContext";
+import { CartProvider } from "./contexts/CartContext";
 import App from "./App";
 import "./index.css";
+
+const client = new ApolloClient({
+	uri: "http://localhost:4000",
+	cache: new InMemoryCache(),
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<PersistGate persistor={persistor}>
-				<App />
-			</PersistGate>
-		</Provider>
+		<ApolloProvider client={client}>
+			<UserProvider>
+				<CategoriesProvider>
+					<CartProvider>
+						<App />
+					</CartProvider>
+				</CategoriesProvider>
+			</UserProvider>
+		</ApolloProvider>
 	</React.StrictMode>
 );

@@ -1,10 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useContext } from "react";
 import { ReactComponent as CaptureLogo } from "../../assets/capture.svg";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropdown from "../CartDropdown/CartDropdown";
-import { selectCurrentUser } from "../../store/user/user.selector";
-import { selectIsCartOpen } from "../../store/cart/cart.selector";
-import { signOutStart } from "../../store/user/user.action";
+import { UserContext } from "../../contexts/UserContext";
+import { CartContext } from "../../contexts/CartContext";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 import {
 	NavigationContainer,
 	LogoContainer,
@@ -13,11 +13,8 @@ import {
 } from "./Navigation.styles";
 
 const Navigation = () => {
-	const dispatch = useDispatch();
-	const currentUser = useSelector(selectCurrentUser);
-	const isCartOpen = useSelector(selectIsCartOpen);
-
-	const signOutUser = () => dispatch(signOutStart());
+	const { currentUser } = useContext(UserContext);
+	const { isCartOpen } = useContext(CartContext);
 
 	return (
 		<>

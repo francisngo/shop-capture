@@ -1,5 +1,4 @@
 import ProductCard from "../ProductCard/ProductCard";
-
 import {
 	CategoryPreviewContainer,
 	Title,

@@ -1,10 +1,13 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { useDispatch } from "react-redux";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
-import { signUpStart } from "../../store/user/user.action";
+import {
+	createAuthUserWithEmailAndPassword,
+	createUserDocumentFromAuth,
+  } from '../../utils/firebase/firebase.utils';
 import { SignInContainer } from "../SignInForm/SignInForm.styles";
-import { AuthError, AuthErrorCodes } from "firebase/auth";
+
 
 const defaultFormFields = {
 	displayName: "",
@@ -14,7 +17,6 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
-	const dispatch = useDispatch();
 	const [formFields, setFormFields] = useState(defaultFormFields);
 	const { displayName, email, password, confirmPassword } = formFields;
 
@@ -31,7 +33,12 @@ const SignUpForm = () => {
 		}
 
 		try {
-			dispatch(signUpStart(email, password, displayName));
+			const user = await createAuthUserWithEmailAndPassword(
+				email,
+				password
+			);
+			console.log('user: ', user);
+			await createUserDocumentFromAuth(user, { displayName });
 			resetFormFields();
 		} catch (error) {
 			if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
