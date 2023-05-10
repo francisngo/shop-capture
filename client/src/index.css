@@ -1,9 +1,15 @@
 body {
 	margin: 0;
-	padding: 20px 40px;
+	padding: 20px 40px 0 40px;
 	font-family: "Nunito Sans", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 code {
