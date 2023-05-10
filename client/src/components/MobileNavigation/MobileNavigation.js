@@ -15,6 +15,10 @@ const MobileNavigation = () => {
 	const { currentUser } = useContext(UserContext);
 
 	const toggleMenu = () => setOpen(!isOpen);
+	const handleSignOut = () => {
+		setOpen(!isOpen);
+		signOutUser();
+	};
 
 	return (
 		<NavLinksContainer>
@@ -23,24 +27,34 @@ const MobileNavigation = () => {
 				<>
 					<LinksWrapper>
 						<LinkItem>
-							<NavLink to="/shop/cameras">CAMERAS</NavLink>
+							<NavLink onClick={toggleMenu} to="/shop/cameras">
+								CAMERAS
+							</NavLink>
 						</LinkItem>
 						<LinkItem>
-							<NavLink to="/shop/lenses">LENSES</NavLink>
+							<NavLink onClick={toggleMenu} to="/shop/lenses">
+								LENSES
+							</NavLink>
 						</LinkItem>
 						<LinkItem>
-							<NavLink to="/shop/backpacks">BACKPACKS</NavLink>
+							<NavLink onClick={toggleMenu} to="/shop/backpacks">
+								BACKPACKS
+							</NavLink>
 						</LinkItem>
 						<LinkItem>
-							<NavLink to="/shop/filters">ACCESSORIES</NavLink>
+							<NavLink onClick={toggleMenu} to="/shop/filters">
+								ACCESSORIES
+							</NavLink>
 						</LinkItem>
 						<LinkItem>
 							{currentUser ? (
-								<NavLink as="span" onClick={signOutUser}>
+								<NavLink as="span" onClick={handleSignOut}>
 									SIGN OUT
 								</NavLink>
 							) : (
-								<NavLink to="/auth">LOGIN</NavLink>
+								<NavLink onClick={toggleMenu} to="/auth">
+									LOGIN
+								</NavLink>
 							)}
 						</LinkItem>
 						<LinkItem>

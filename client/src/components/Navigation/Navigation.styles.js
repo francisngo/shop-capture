@@ -46,7 +46,7 @@ export const LinksWrapper = styled.ul`
 
 export const LinkItem = styled.li`
 	height: 100%;
-	padding: 0 1.1em;
+	padding: 0 0.5em;
 	font-weight: 500;
 	align-items: center;
 	justify-content: center;
