@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./routes/Home/Home";
 import Navigation from "./components/Navigation/Navigation";
-// import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import CategoriesPreview from "./routes/CategoriesPreview/CategoriesPreview";
 import Category from "./routes/Category/Category";
 import Authentication from "./routes/Authentication/Authentication";
@@ -12,7 +12,7 @@ const Layout = () => {
 		<>
 			<Navigation />
 			<Outlet />
-			{/* <Footer /> */}
+			<Footer />
 		</>
 	);
 };

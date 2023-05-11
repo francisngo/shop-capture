@@ -1,33 +1,41 @@
-import Slider from "react-slick";
-import styled from "styled-components";
-
-const SliderImage = styled.div`
-	width: 100%;
-	img {
-		width: 100%;
-		height: 700px;
-		object-fit: cover;
-	}
-`;
+import { useState } from "react";
+import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
+import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
+import "./ImageSlider.scss";
 
 const ImageSlider = ({ images }) => {
-	const settings = {
-		dots: true,
-		infinite: true,
-		speed: 1000,
-		autoplay: true,
-		slidesToShow: 1,
-		slidesToScroll: 1,
+	const [currentSlide, setCurrentSlide] = useState(0);
+
+	const prevSlide = () => {
+		setCurrentSlide(
+			currentSlide === 0 ? images.length - 1 : (prev) => prev - 1
+		);
+	};
+	const nextSlide = () => {
+		setCurrentSlide(
+			currentSlide === images.length - 1 ? 0 : (prev) => prev + 1
+		);
 	};
 
 	return (
-		<Slider {...settings}>
-			{images.map((image) => (
-				<SliderImage>
-					<img src={image.src} alt={image.name} />
-				</SliderImage>
-			))}
-		</Slider>
+		<div className="slider">
+			<div
+				className="container"
+				style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
+			>
+				{images.map((image) => (
+					<img key={image.id} src={image.src} alt={image.name} />
+				))}
+			</div>
+			<div className="icons">
+				<div className="icon" onClick={prevSlide}>
+					<WestOutlinedIcon />
+				</div>
+				<div className="icon" onClick={nextSlide}>
+					<EastOutlinedIcon />
+				</div>
+			</div>
+		</div>
 	);
 };
 
