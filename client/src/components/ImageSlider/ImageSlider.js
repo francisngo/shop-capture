@@ -1,7 +1,13 @@
 import { useState } from "react";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
-import "./ImageSlider.scss";
+import {
+	SliderContainer,
+	ImageContainer,
+	Image,
+	IconsContainer,
+	Icon,
+} from "./ImageSlider.styles";
 
 const ImageSlider = ({ images }) => {
 	const [currentSlide, setCurrentSlide] = useState(0);
@@ -18,24 +24,23 @@ const ImageSlider = ({ images }) => {
 	};
 
 	return (
-		<div className="slider">
-			<div
-				className="container"
+		<SliderContainer>
+			<ImageContainer
 				style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
 			>
 				{images.map((image) => (
-					<img key={image.id} src={image.src} alt={image.name} />
+					<Image key={image.id} src={image.src} alt={image.name} />
 				))}
-			</div>
-			<div className="icons">
-				<div className="icon" onClick={prevSlide}>
+			</ImageContainer>
+			<IconsContainer>
+				<Icon onClick={prevSlide}>
 					<WestOutlinedIcon />
-				</div>
-				<div className="icon" onClick={nextSlide}>
+				</Icon>
+				<Icon onClick={nextSlide}>
 					<EastOutlinedIcon />
-				</div>
-			</div>
-		</div>
+				</Icon>
+			</IconsContainer>
+		</SliderContainer>
 	);
 };
 
