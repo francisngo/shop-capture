@@ -2,13 +2,21 @@ import { Link } from "react-router-dom";
 
 import "./ProductPreview.scss";
 
-const ProductPreview = ({ id, isNew, img, altImg, title, oldPrice, price }) => {
+const ProductPreview = ({
+	id,
+	isNew,
+	imageUrl,
+	altImg,
+	title,
+	oldPrice,
+	price,
+}) => {
 	return (
 		<Link to={`/product/${id}`}>
 			<div className="product">
 				<div className="image">
 					{id.isNew && <span>New Season</span>}
-					<img className="primary" src={img} />
+					<img className="primary" src={imageUrl} />
 					<img className="secondary" src={altImg} />
 				</div>
 				<h2>{title}</h2>

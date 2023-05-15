@@ -1,8 +1,7 @@
 import ProductPreview from "../ProductPreview/ProductPreview";
+import "./List.scss";
 
-import "./FeaturedProducts.scss";
-
-const FeaturedProducts = () => {
+const List = () => {
 	const data = [
 		{
 			id: 1,
@@ -41,19 +40,13 @@ const FeaturedProducts = () => {
 			price: 1649,
 		},
 	];
-
 	return (
-		<div className="featured-products">
-			<div className="top">
-				<h2>Featured Products</h2>
-			</div>
-			<div className="bottom">
-				{data.map((props) => (
-					<ProductPreview {...props} />
-				))}
-			</div>
+		<div className="list-container">
+			{data.map((item) => (
+				<ProductPreview key={item.id} {...item} />
+			))}
 		</div>
 	);
 };
 
-export default FeaturedProducts;
+export default List;
