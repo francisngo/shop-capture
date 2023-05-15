@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import "./Product.scss";
+import "./ProductPreview.scss";
 
-const Product = ({ id, isNew, img, altImg, title, oldPrice, price }) => {
+const ProductPreview = ({ id, isNew, img, altImg, title, oldPrice, price }) => {
 	return (
 		<Link to={`/product/${id}`}>
 			<div className="product">
@@ -21,4 +21,4 @@ const Product = ({ id, isNew, img, altImg, title, oldPrice, price }) => {
 	);
 };
 
-export default Product;
+export default ProductPreview;

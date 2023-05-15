@@ -1,5 +1,6 @@
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
 import FeaturedProducts from "../../components/FeaturedProducts/FeaturedProducts";
+import CategoryGrid from "../../components/CategoryGrid/CategoryGrid";
 
 const IMAGE_DATA = [
 	{
@@ -34,6 +35,7 @@ const Home = () => {
 		<div className="home-container">
 			<ImageSlider images={IMAGE_DATA} />
 			<FeaturedProducts />
+			<CategoryGrid />
 		</div>
 	);
 };

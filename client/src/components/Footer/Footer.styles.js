@@ -8,6 +8,8 @@ export const FooterContainer = styled.div`
 	margin-top: auto;
 	height: 70px;
 	font-size: 15px;
+	background-color: black;
+	color: white;
 
 	@media screen and (max-width: 896px) {
 		flex-direction: column;

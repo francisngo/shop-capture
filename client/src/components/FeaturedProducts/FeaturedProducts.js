@@ -1,4 +1,4 @@
-import Product from "../Product/Product";
+import ProductPreview from "../ProductPreview/ProductPreview";
 
 import "./FeaturedProducts.scss";
 
@@ -45,7 +45,7 @@ const FeaturedProducts = () => {
 			</div>
 			<div className="bottom">
 				{data.map((props) => (
-					<Product {...props} />
+					<ProductPreview {...props} />
 				))}
 			</div>
 		</div>

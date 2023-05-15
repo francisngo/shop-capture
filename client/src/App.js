@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./routes/Home/Home";
 import Navigation from "./components/Navigation/Navigation";
+import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import CategoriesPreview from "./routes/CategoriesPreview/CategoriesPreview";
 import Category from "./routes/Category/Category";
@@ -12,6 +13,7 @@ const Layout = () => {
 		<>
 			<Navigation />
 			<Outlet />
+			<Contact />
 			<Footer />
 		</>
 	);
@@ -43,6 +45,14 @@ function App() {
 					path: "/cart",
 					element: <Cart />,
 				},
+				// {
+				// 	path: "/products/:id",
+				// 	element: <Products />,
+				// },
+				// {
+				// 	path: "/product/:id",
+				// 	element: <Product />,
+				// },
 			],
 		},
 	]);
