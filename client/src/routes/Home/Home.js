@@ -1,4 +1,5 @@
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
+import FeaturedProducts from "../../components/FeaturedProducts/FeaturedProducts";
 
 const IMAGE_DATA = [
 	{
@@ -28,6 +29,13 @@ const IMAGE_DATA = [
 	},
 ];
 
-const Home = () => <ImageSlider images={IMAGE_DATA} />;
+const Home = () => {
+	return (
+		<div className="home-container">
+			<ImageSlider images={IMAGE_DATA} />
+			<FeaturedProducts />
+		</div>
+	);
+};
 
 export default Home;
