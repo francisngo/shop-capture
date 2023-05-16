@@ -3,6 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { ReactComponent as CaptureLogo } from "../../assets/capture.svg";
 import CartIcon from "../CartIcon/CartIcon";
 import CartDropdown from "../CartDropdown/CartDropdown";
+import Cart from "../Cart/Cart";
 import MobileNavigation from "../MobileNavigation/MobileNavigation";
 import { UserContext } from "../../contexts/UserContext";
 import { CartContext } from "../../contexts/CartContext";
@@ -78,7 +79,7 @@ const Navigation = () => {
 					{!isMobile && <CartIcon />}
 					{isMobile && <MobileNavigation />}
 				</RightSection>
-				{isCartOpen && <CartDropdown />}
+				{isCartOpen && <Cart />}
 			</NavigationContainer>
 		</>
 	);

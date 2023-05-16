@@ -4,7 +4,7 @@ import List from "../../components/List/List";
 
 import "./Products.scss";
 
-const Products = (item) => {
+const Products = () => {
 	const categoryId = parseInt(useParams().id, 10);
 	const [maxPrice, setMaxPrice] = useState(10000);
 	const [sort, setSort] = useState(null);

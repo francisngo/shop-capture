@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useParams } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
+import { CartContext } from "../../contexts/CartContext";
 import "./Product.scss";
 
 const Product = () => {
+	const categoryId = parseInt(useParams().id, 10);
 	const [selectedImage, setSelectedImage] = useState(0);
+	const { cartItems, addItemToCart } = useContext(CartContext);
+
+	console.log(categoryId);
+
 	const images = [
 		"https://images.pexels.com/photos/16827633/pexels-photo-16827633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 		"https://images.pexels.com/photos/16827632/pexels-photo-16827632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 	];
+
+	const addProductToCart = () => addItemToCart(cartItems);
 
 	return (
 		<div className="product-container">
