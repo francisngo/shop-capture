@@ -32,15 +32,30 @@ const typeDefs = gql`
         price: Int,
     }
 
-    # A Capture List of Categories
     type Category {
         title: String,
         items: [CategoryItem]
     }
 
+    type FeaturedProducts {
+        id: Int,
+        imageUrl: String,
+        name: String,
+        price: Int,
+    }
+
+    type Product {
+        id: Int,
+        imageUrl: String,
+        name: String,
+        price: Int,
+    }
+
     type Query {
         category(title: String!): Category
         categories: [Category]
+        featuredProducts: [FeaturedProducts]
+        product(id: Int!): Product
     }
 `
 
@@ -52,9 +67,8 @@ const resolvers = {
                 .collection('categories')
                 .get();
             return snapshot.docs.map(doc => {
-                console.log(doc);
                 return doc.data()
-            }) as Category[];
+            }) as Category[]
         },
         category: async (_: any, { title }) => {
             const snapshot = await db
@@ -68,6 +82,38 @@ const resolvers = {
             let data;
             snapshot.forEach(doc => data = doc.data());
             return data;
+        },
+        featuredProducts: async () => {
+            const snapshot = await db
+                .collection('categories')
+                .get();
+            const data = snapshot.docs.map(doc => {
+                return doc.data()
+            }) as Category[]
+            let products = new Set();
+            for (const category of data) {
+                if (category.items.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * category.items.length);
+                    products.add(category.items[randomIndex]);
+                    if (products.size === 4) break;
+                }
+            }
+            return Array.from(products);
+        },
+        product: async (_: any, { id }) => {
+            const snapshot = await db
+                .collection('categories')
+                .get();
+            let product
+            snapshot.docs.forEach(doc => {
+                const items = doc.data().items;
+                const matchingItem = items.find(item => item.id === id)
+                if (matchingItem) {
+                    product = matchingItem
+                }
+            });
+            return product;
+            // return snapshot,.docs.map(doc => doc.data())
         }
     }
 }

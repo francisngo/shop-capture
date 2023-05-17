@@ -3,24 +3,6 @@ const SHOP_DATA = [
 		title: "Cameras",
 		items: [
 			{
-				id: 1,
-				name: "Canon R5",
-				imageUrl: "https://i.ibb.co/7491mnT/car5.jpg",
-				price: 3399.0,
-			},
-			{
-				id: 2,
-				name: "Canon R50",
-				imageUrl: "https://i.ibb.co/yqCPv0t/car50.jpg",
-				price: 679.0,
-			},
-			{
-				id: 3,
-				name: "Canon R50",
-				imageUrl: "https://i.ibb.co/yqCPv0t/car50.jpg",
-				price: 679.0,
-			},
-			{
 				id: 4,
 				name: "Sony Alpha 1",
 				imageUrl: "https://i.ibb.co/6t0ssVg/isoa1.jpg",
@@ -44,41 +26,11 @@ const SHOP_DATA = [
 				imageUrl: "https://i.ibb.co/N98cgMf/isoa6400.jpg",
 				price: 898.0,
 			},
-			{
-				id: 8,
-				name: "Leica M11 Rangefinder",
-				imageUrl: "https://i.ibb.co/6sGdnJM/lcm11b.jpg",
-				price: 8995.0,
-			},
 		],
 	},
 	{
 		title: "Lenses",
 		items: [
-			{
-				id: 9,
-				name: "Canon RF 70-200mm f/2.8",
-				imageUrl: "https://i.ibb.co/xGshnVH/car7020028.jpg",
-				price: 2599.0,
-			},
-			{
-				id: 10,
-				name: "Canon RF 24-70 f/2.8",
-				imageUrl: "https://i.ibb.co/hdkjcMh/car2470.jpg",
-				price: 2199.0,
-			},
-			{
-				id: 12,
-				name: "Canon RF 50mm f/1.2",
-				imageUrl: "https://i.ibb.co/9GmxgCm/car5012.jpg",
-				price: 2099.0,
-			},
-			{
-				id: 13,
-				name: "Canon RF 85mm f/1.2",
-				imageUrl: "https://i.ibb.co/NtzjGYD/car8512.jpg",
-				price: 2899.0,
-			},
 			{
 				id: 14,
 				name: "Fujifilm XF 23mm f/2",

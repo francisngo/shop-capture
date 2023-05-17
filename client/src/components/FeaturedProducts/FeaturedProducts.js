@@ -1,46 +1,30 @@
+import { useState, useEffect } from "react";
+import { gql, useQuery } from "@apollo/client";
 import ProductPreview from "../ProductPreview/ProductPreview";
-
+import Spinner from "../Spinner/Spinner";
 import "./FeaturedProducts.scss";
 
+const FEATURED_PRODUCTS = gql`
+	query Query {
+		featuredProducts {
+			price
+			name
+			imageUrl
+			id
+		}
+	}
+`;
+
 const FeaturedProducts = () => {
-	const data = [
-		{
-			id: 1,
-			imageUrl:
-				"https://images.pexels.com/photos/16827633/pexels-photo-16827633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-			altImg: "https://images.pexels.com/photos/16827632/pexels-photo-16827632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-			title: "Fujifilm X-T5",
-			oldPrice: 1799,
-			price: 1649,
-		},
-		{
-			id: 1,
-			imageUrl:
-				"https://images.pexels.com/photos/16827633/pexels-photo-16827633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-			altImg: "https://images.pexels.com/photos/16827632/pexels-photo-16827632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-			title: "Fujifilm X-T5",
-			oldPrice: 1799,
-			price: 1649,
-		},
-		{
-			id: 1,
-			imageUrl:
-				"https://images.pexels.com/photos/16827633/pexels-photo-16827633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-			altImg: "https://images.pexels.com/photos/16827632/pexels-photo-16827632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-			title: "Fujifilm X-T5",
-			oldPrice: 1799,
-			price: 1649,
-		},
-		{
-			id: 1,
-			imageUrl:
-				"https://images.pexels.com/photos/16827633/pexels-photo-16827633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-			altImg: "https://images.pexels.com/photos/16827632/pexels-photo-16827632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-			title: "Fujifilm X-T5",
-			oldPrice: 1799,
-			price: 1649,
-		},
-	];
+	const { loading, data } = useQuery(FEATURED_PRODUCTS);
+	const [products, setProducts] = useState([]);
+
+	useEffect(() => {
+		if (data) {
+			const { featuredProducts } = data;
+			setProducts(featuredProducts);
+		}
+	});
 
 	return (
 		<div className="featured-products">
@@ -48,9 +32,13 @@ const FeaturedProducts = () => {
 				<h2>Featured Products</h2>
 			</div>
 			<div className="bottom">
-				{data.map((props) => (
-					<ProductPreview {...props} />
-				))}
+				{loading ? (
+					<Spinner />
+				) : (
+					products.map((props) => (
+						<ProductPreview key={props.id} {...props} />
+					))
+				)}
 			</div>
 		</div>
 	);

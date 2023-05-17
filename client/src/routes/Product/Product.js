@@ -1,52 +1,74 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
 import { CartContext } from "../../contexts/CartContext";
 import "./Product.scss";
 
+const PRODUCT = gql`
+	query Query($productId: Int!) {
+		product(id: $productId) {
+			id
+			name
+			imageUrl
+			price
+		}
+	}
+`;
+
 const Product = () => {
-	const categoryId = parseInt(useParams().id, 10);
+	const { id } = useParams();
+	const productId = parseInt(id, 10);
+	const { loading, error, data } = useQuery(PRODUCT, {
+		variables: { productId },
+	});
 	const [selectedImage, setSelectedImage] = useState(0);
-	const { cartItems, addItemToCart } = useContext(CartContext);
+	const [product, setProduct] = useState({});
+	const { cartItems, addItemToCart, removeItemFromCart } =
+		useContext(CartContext);
 
-	console.log(categoryId);
+	const addItemToCartHandler = () => addItemToCart(cartItems, product);
+	const removeItemToCartHandler = () =>
+		removeItemFromCart(cartItems, product);
 
-	const images = [
-		"https://images.pexels.com/photos/16827633/pexels-photo-16827633.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-		"https://images.pexels.com/photos/16827632/pexels-photo-16827632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-	];
-
-	const addProductToCart = () => addItemToCart(cartItems);
+	useEffect(() => {
+		console.log("data: ", data);
+		console.log("error: ", error);
+		if (data) {
+			const { product } = data;
+			setProduct(product);
+		}
+	}, [product, data]);
 
 	return (
 		<div className="product-container">
 			<div className="left">
 				<div className="images">
 					<img
-						src={images[0]}
+						src={product?.imageUrl}
 						alt=""
-						onClick={(e) => setSelectedImage(0)}
+						// onClick={(e) => setSelectedImage(0)}
 					/>
-					<img
+					{/* <img
 						src={images[1]}
 						alt=""
 						onClick={(e) => setSelectedImage(1)}
-					/>
+					/> */}
 				</div>
 			</div>
 			<div className="main-image">
-				<img src={images[selectedImage]} alt="" />
+				<img src={product?.imageUrl} alt="" />
 			</div>
 			<div className="right">
-				<h1>Title</h1>
-				<span className="price">Price</span>
+				<h1>{product?.name}</h1>
+				<span className="price">${product?.price}</span>
 				<p>Description</p>
 				<div className="quantity">
-					<button>-</button>
+					<button onClick={removeItemToCartHandler}>-</button>
 					Quantity
-					<button>+</button>
+					<button onClick={addItemToCartHandler}>+</button>
 				</div>
 				<button className="add">
 					<AddShoppingCartIcon />

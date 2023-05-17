@@ -6,7 +6,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import { CategoryContainer, CategoryTitle } from "./Category.styles";
 
 const CATEGORY = gql`
-	query Category($title: String!) {
+	query Query($title: String!) {
 		category(title: $title) {
 			title
 			items {
