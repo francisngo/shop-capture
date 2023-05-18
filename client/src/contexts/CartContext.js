@@ -43,8 +43,9 @@ const removeCartItem = (cartItems, productToRemove) => {
 	);
 };
 
-const clearCartItem = (cartItems, productToClear) =>
-	cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
+const clearCartItem = (cartItems, productToClear) => {
+	return cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
+};
 
 const getQuantity = (cartItems, item) => {
 	const product = cartItems.find((cartItem) => cartItem.id === item.id);

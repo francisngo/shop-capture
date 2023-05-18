@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import { ReactComponent as CaptureLogo } from "../../assets/capture.svg";
 import CartIcon from "../CartIcon/CartIcon";
-import CartDropdown from "../CartDropdown/CartDropdown";
 import Cart from "../Cart/Cart";
 import MobileNavigation from "../MobileNavigation/MobileNavigation";
 import { UserContext } from "../../contexts/UserContext";
@@ -45,20 +44,22 @@ const Navigation = () => {
 						<NavLinksContainer>
 							<LinksWrapper>
 								<LinkItem>
-									<NavLink to="/shop/cameras">
+									<NavLink to="/products/cameras">
 										CAMERAS
 									</NavLink>
 								</LinkItem>
 								<LinkItem>
-									<NavLink to="/shop/lenses">LENSES</NavLink>
+									<NavLink to="/products/lenses">
+										LENSES
+									</NavLink>
 								</LinkItem>
 								<LinkItem>
-									<NavLink to="/shop/backpacks">
+									<NavLink to="/products/backpacks">
 										BACKPACKS
 									</NavLink>
 								</LinkItem>
 								<LinkItem>
-									<NavLink to="/shop/filters">
+									<NavLink to="/products/filters">
 										ACCESSORIES
 									</NavLink>
 								</LinkItem>

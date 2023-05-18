@@ -8,7 +8,7 @@ const CategoryGrid = () => {
 				<div className="row">
 					<img src="https://images.pexels.com/photos/16828894/pexels-photo-16828894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
 					<button>
-						<Link className="link" to="/products/1">
+						<Link className="link" to="/products/cameras">
 							Cameras
 						</Link>
 					</button>
@@ -16,7 +16,7 @@ const CategoryGrid = () => {
 				<div className="row">
 					<img src="https://images.pexels.com/photos/16828889/pexels-photo-16828889.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
 					<button>
-						<Link className="link" to="/products/1">
+						<Link className="link" to="/products/filters">
 							Filters
 						</Link>
 					</button>
@@ -26,7 +26,7 @@ const CategoryGrid = () => {
 				<div className="row">
 					<img src="https://images.pexels.com/photos/16828890/pexels-photo-16828890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
 					<button>
-						<Link className="link" to="/products/1">
+						<Link className="link" to="/products/lenses">
 							Lenses
 						</Link>
 					</button>
@@ -38,8 +38,11 @@ const CategoryGrid = () => {
 						<div className="row">
 							<img src="https://images.pexels.com/photos/16828888/pexels-photo-16828888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
 							<button>
-								<Link className="link" to="/products/1">
-									Lighting
+								<Link
+									className="link"
+									to="/products/microphones"
+								>
+									Microphones
 								</Link>
 							</button>
 						</div>
@@ -48,7 +51,7 @@ const CategoryGrid = () => {
 						<div className="row">
 							<img src="https://images.pexels.com/photos/16828891/pexels-photo-16828891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
 							<button>
-								<Link className="link" to="/products/1">
+								<Link className="link" to="/products/tripods">
 									Tripods
 								</Link>
 							</button>
@@ -58,7 +61,7 @@ const CategoryGrid = () => {
 				<div className="row">
 					<img src="https://images.pexels.com/photos/16828892/pexels-photo-16828892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
 					<button>
-						<Link className="link" to="/products/1">
+						<Link className="link" to="/products/backpacks">
 							Backpacks
 						</Link>
 					</button>

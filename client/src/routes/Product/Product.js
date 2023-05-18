@@ -42,7 +42,10 @@ const Product = () => {
 	const addProductToCart = () => {
 		addItemToCart(product);
 	};
-	const addItemToCartHandler = () => addItemToCart(product);
+
+	const addItemToCartHandler = () => {
+		addItemToCart(product);
+	};
 	const removeItemToCartHandler = () => removeItemFromCart(product);
 
 	const { name, price } = product;

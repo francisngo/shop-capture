@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import List from "../../components/List/List";
+import ProductPreview from "../../components/ProductPreview/ProductPreview";
+import Spinner from "../../components/Spinner/Spinner";
+import { CategoriesContext } from "../../contexts/CategoriesContext";
 
 import "./Products.scss";
 
 const Products = () => {
-	const categoryId = parseInt(useParams().id, 10);
-	const [maxPrice, setMaxPrice] = useState(10000);
-	const [sort, setSort] = useState(null);
+	const { category } = useParams();
+	const { categoriesMap, loading } = useContext(CategoriesContext);
+	const products = categoriesMap[category] || [];
 
 	return (
 		<div className="products-container">
-			<div className="left">
+			{/* <div className="left">
 				<div classname="filter-item">
 					<h2>Product Categories</h2>
 					<div className="input-item">
@@ -63,14 +65,24 @@ const Products = () => {
 						<label htmlFor="desc">Price (Highest first)</label>
 					</div>
 				</div>
-			</div>
+			</div> */}
 			<div className="right">
 				<img
 					className="category-image"
 					src="https://images.pexels.com/photos/16828894/pexels-photo-16828894.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
 					alt=""
 				/>
-				<List categoryId={categoryId} maxPrice={maxPrice} sort={sort} />
+				<div className="list-container">
+					{loading ? (
+						<Spinner />
+					) : (
+						<>
+							{products.map((item) => (
+								<ProductPreview key={item.id} {...item} />
+							))}
+						</>
+					)}
+				</div>
 			</div>
 		</div>
 	);

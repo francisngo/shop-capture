@@ -10,7 +10,7 @@ const Cart = () => {
 	const { cartItems, cartTotal } = useContext(CartContext);
 	const navigate = useNavigate();
 
-	const goToCheckoutHandler = () => navigate("/cart");
+	const goToCheckoutHandler = () => navigate("/checkout");
 
 	return (
 		<div className="cart-container">
@@ -23,6 +23,9 @@ const Cart = () => {
 							<div className="price">
 								{item.quantity} x ${item.price}
 							</div>
+						</div>
+						<div className="delete">
+							<DeleteOutlineIcon />
 						</div>
 					</div>
 				))
