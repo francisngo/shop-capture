@@ -10,6 +10,7 @@ const FEATURED_PRODUCTS = gql`
 			price
 			name
 			imageUrl
+			altImg
 			id
 		}
 	}

@@ -15,6 +15,7 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 interface CategoryItem {
     id: number,
     imageUrl: string,
+    altImg: string,
     name: string,
     price: number,
 }
@@ -28,6 +29,7 @@ const typeDefs = gql`
     type CategoryItem {
         id: Int,
         imageUrl: String,
+        altImg: String,
         name: String,
         price: Int,
     }
@@ -40,6 +42,7 @@ const typeDefs = gql`
     type FeaturedProducts {
         id: Int,
         imageUrl: String,
+        altImg: String,
         name: String,
         price: Int,
     }
@@ -47,6 +50,7 @@ const typeDefs = gql`
     type Product {
         id: Int,
         imageUrl: String,
+        altImg: String,
         name: String,
         price: Int,
     }
@@ -109,11 +113,10 @@ const resolvers = {
                 const items = doc.data().items;
                 const matchingItem = items.find(item => item.id === id)
                 if (matchingItem) {
-                    product = matchingItem
+                    product = matchingItem;
                 }
             });
             return product;
-            // return snapshot,.docs.map(doc => doc.data())
         }
     }
 }
