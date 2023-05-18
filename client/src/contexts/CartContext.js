@@ -43,9 +43,8 @@ const removeCartItem = (cartItems, productToRemove) => {
 	);
 };
 
-const clearCartItem = (cartItems, productToClear) => {
-	return cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
-};
+const clearCartItem = (cartItems, productToClear) =>
+	cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
 
 const getQuantity = (cartItems, item) => {
 	const product = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -81,7 +80,7 @@ export const CartProvider = ({ children }) => {
 		setCartItems(removeCartItem(cartItems, productToRemove));
 
 	const clearItemFromCart = (productToClear) =>
-		setCartTotal(clearCartItem(cartItems, productToClear));
+		setCartItems(clearCartItem(cartItems, productToClear));
 
 	const getProductQuantity = (product) => {
 		return getQuantity(cartItems, product);

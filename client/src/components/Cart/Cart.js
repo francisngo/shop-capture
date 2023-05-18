@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Button from "../Button/Button";
 import { CartContext } from "../../contexts/CartContext";
 import { EmptyMessage } from "./Cart.styles";
-
 import "./Cart.scss";
 
 const Cart = () => {
-	const { cartItems, cartTotal } = useContext(CartContext);
+	const { cartItems, cartTotal, clearItemFromCart } = useContext(CartContext);
 	const navigate = useNavigate();
 
 	const goToCheckoutHandler = () => navigate("/checkout");
+	const clearItemFromCartHandler = (cartItem) => clearItemFromCart(cartItem);
 
 	return (
 		<div className="cart-container">
@@ -24,7 +25,10 @@ const Cart = () => {
 								{item.quantity} x ${item.price}
 							</div>
 						</div>
-						<div className="delete">
+						<div
+							className="delete"
+							onClick={() => clearItemFromCartHandler(item)}
+						>
 							<DeleteOutlineIcon />
 						</div>
 					</div>

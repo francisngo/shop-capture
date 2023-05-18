@@ -4,6 +4,7 @@ import { gql, useQuery } from "@apollo/client";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
+import Button from "../../components/Button/Button";
 import { CartContext } from "../../contexts/CartContext";
 import "./Product.scss";
 
@@ -78,10 +79,12 @@ const Product = () => {
 					{getProductQuantity(product)}
 					<button onClick={addItemToCartHandler}>+</button>
 				</div>
-				<button className="add" onClick={addProductToCart}>
-					<AddShoppingCartIcon />
-					ADD TO CART
-				</button>
+				<div className="button-container">
+					<Button onClick={addProductToCart}>
+						<AddShoppingCartIcon />
+						ADD TO CART
+					</Button>
+				</div>
 				<div className="links">
 					<div className="item">
 						<FavoriteBorderIcon /> ADD TO WISH LIST

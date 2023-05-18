@@ -70,21 +70,17 @@
                 justify-content: center;
                 cursor: pointer;
                 border: none;
+
+                &:hover {
+                    background-color: lightgray;
+                    border: none;
+                }
+
             }
         }
 
-        .add {
-            width: 250px;
-            padding: 10px;
-            background-color: black;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            cursor: pointer;
-            border: none;
-            font-weight: 500;
+        .button-container {
+            width: 310px;
         }
 
         .links {
