@@ -31,7 +31,7 @@ const removeCartItem = (cartItems, productToRemove) => {
 		(cartItem) => cartItem.id === productToRemove.id
 	);
 
-	if (existingCartItem.quantity === 1) {
+	if (existingCartItem?.quantity === 1) {
 		return cartItems.filter(
 			(cartItem) => cartItem.id !== productToRemove.id
 		);
@@ -45,6 +45,11 @@ const removeCartItem = (cartItems, productToRemove) => {
 
 const clearCartItem = (cartItems, productToClear) =>
 	cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
+
+const getQuantity = (cartItems, item) => {
+	const product = cartItems.find((cartItem) => cartItem.id === item.id);
+	return product ? product.quantity : 0;
+};
 
 export const CartProvider = ({ children }) => {
 	const [isCartOpen, toggleCart] = useState(false);
@@ -77,6 +82,10 @@ export const CartProvider = ({ children }) => {
 	const clearItemFromCart = (productToClear) =>
 		setCartTotal(clearCartItem(cartItems, productToClear));
 
+	const getProductQuantity = (product) => {
+		return getQuantity(cartItems, product);
+	};
+
 	const value = {
 		isCartOpen,
 		toggleCart,
@@ -86,6 +95,7 @@ export const CartProvider = ({ children }) => {
 		clearItemFromCart,
 		cartCount,
 		cartTotal,
+		getProductQuantity,
 	};
 
 	return (

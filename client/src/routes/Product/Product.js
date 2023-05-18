@@ -13,6 +13,7 @@ const PRODUCT = gql`
 			id
 			name
 			imageUrl
+			altImg
 			price
 		}
 	}
@@ -24,55 +25,59 @@ const Product = () => {
 	const { loading, error, data } = useQuery(PRODUCT, {
 		variables: { productId },
 	});
+	const [images, setImages] = useState([]);
 	const [selectedImage, setSelectedImage] = useState(0);
 	const [product, setProduct] = useState({});
-	const { cartItems, addItemToCart, removeItemFromCart } =
+	const { addItemToCart, removeItemFromCart, getProductQuantity } =
 		useContext(CartContext);
 
-	const addItemToCartHandler = () => addItemToCart(cartItems, product);
-	const removeItemToCartHandler = () =>
-		removeItemFromCart(cartItems, product);
-
 	useEffect(() => {
-		console.log("data: ", data);
-		console.log("error: ", error);
 		if (data) {
 			const { product } = data;
 			setProduct(product);
+			setImages([product.imageUrl, product.altImg]);
 		}
 	}, [product, data]);
+
+	const addProductToCart = () => {
+		addItemToCart(product);
+	};
+	const addItemToCartHandler = () => addItemToCart(product);
+	const removeItemToCartHandler = () => removeItemFromCart(product);
+
+	const { name, price } = product;
 
 	return (
 		<div className="product-container">
 			<div className="left">
 				<div className="images">
 					<img
-						src={product?.imageUrl}
+						src={images[0]}
 						alt=""
-						// onClick={(e) => setSelectedImage(0)}
+						onClick={(e) => setSelectedImage(0)}
 					/>
-					{/* <img
+					<img
 						src={images[1]}
 						alt=""
 						onClick={(e) => setSelectedImage(1)}
-					/> */}
+					/>
 				</div>
 			</div>
 			<div className="main-image">
-				<img src={product?.imageUrl} alt="" />
+				<img src={images[selectedImage]} alt="" />
 			</div>
 			<div className="right">
-				<h1>{product?.name}</h1>
-				<span className="price">${product?.price}</span>
+				<h1>{name}</h1>
+				<span className="price">${price}</span>
 				<p>Description</p>
 				<div className="quantity">
 					<button onClick={removeItemToCartHandler}>-</button>
-					Quantity
+					{getProductQuantity(product)}
 					<button onClick={addItemToCartHandler}>+</button>
 				</div>
-				<button className="add">
+				<button className="add" onClick={addProductToCart}>
 					<AddShoppingCartIcon />
-					Add To Cart
+					ADD TO CART
 				</button>
 				<div className="links">
 					<div className="item">
