@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import { gql, useQuery } from "@apollo/client";
-import ProductPreview from "../ProductPreview/ProductPreview";
+import ProductCard from "../ProductCard/ProductCard";
 import Spinner from "../Spinner/Spinner";
-import "./FeaturedProducts.scss";
+import {
+	FeaturedProductsContainer,
+	Top,
+	SpinnerContainer,
+	Bottom,
+} from "./FeaturedProducts.styles";
 
 const FEATURED_PRODUCTS = gql`
 	query Query {
@@ -29,20 +34,22 @@ const FeaturedProducts = () => {
 	});
 
 	return (
-		<div className="featured-products">
-			<div className="top">
+		<FeaturedProductsContainer>
+			<Top>
 				<h2>Featured Products</h2>
-			</div>
-			<div className="bottom">
-				{loading ? (
+			</Top>
+			{loading ? (
+				<SpinnerContainer>
 					<Spinner />
-				) : (
-					products.map((props) => (
-						<ProductPreview key={props.id} {...props} />
-					))
-				)}
-			</div>
-		</div>
+				</SpinnerContainer>
+			) : (
+				<Bottom>
+					{products.map((props) => (
+						<ProductCard key={props.id} {...props} />
+					))}
+				</Bottom>
+			)}
+		</FeaturedProductsContainer>
 	);
 };
 

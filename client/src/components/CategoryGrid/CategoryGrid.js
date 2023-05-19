@@ -18,9 +18,7 @@ const CategoryGrid = () => {
 						alt="cameras"
 					/>
 					<Button>
-						<Link className="link" to="/products/cameras">
-							Cameras
-						</Link>
+						<Link to="/products/cameras">Cameras</Link>
 					</Button>
 				</Row>
 				<Row>
@@ -29,9 +27,7 @@ const CategoryGrid = () => {
 						alt="filters"
 					/>
 					<Button>
-						<Link className="link" to="/products/filters">
-							Filters
-						</Link>
+						<Link to="/products/filters">Filters</Link>
 					</Button>
 				</Row>
 			</Column>
@@ -42,9 +38,7 @@ const CategoryGrid = () => {
 						alt="lenses"
 					/>
 					<Button>
-						<Link className="link" to="/products/lenses">
-							Lenses
-						</Link>
+						<Link to="/products/lenses">Lenses</Link>
 					</Button>
 				</Row>
 			</Column>
@@ -57,10 +51,7 @@ const CategoryGrid = () => {
 								alt="microphones"
 							/>
 							<Button>
-								<Link
-									className="link"
-									to="/products/microphones"
-								>
+								<Link to="/products/microphones">
 									Microphones
 								</Link>
 							</Button>
@@ -73,9 +64,7 @@ const CategoryGrid = () => {
 								alt="tripods"
 							/>
 							<Button>
-								<Link className="link" to="/products/tripods">
-									Tripods
-								</Link>
+								<Link to="/products/tripods">Tripods</Link>
 							</Button>
 						</Row>
 					</Column>
@@ -86,9 +75,7 @@ const CategoryGrid = () => {
 						alt="backpacks"
 					/>
 					<Button>
-						<Link className="link" to="/products/backpacks">
-							Backpacks
-						</Link>
+						<Link to="/products/backpacks">Backpacks</Link>
 					</Button>
 				</Row>
 			</ColumnLarge>

@@ -33,7 +33,7 @@ export const Button = styled.div`
 	position: absolute;
 	min-width: 100px;
 	width: fit-content;
-	height: 50px;
+	height: 40px;
 	padding: 10px;
 	top: 0;
 	bottom: 0;
@@ -49,6 +49,13 @@ export const Button = styled.div`
 
 	&:hover {
 		opacity: 0.8;
+	}
+
+	a {
+		display: flex;
+		text-decoration: none;
+		justify-content: center;
+		align-items: center;
 	}
 `;
 

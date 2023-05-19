@@ -3,27 +3,32 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
 import PinterestIcon from "@mui/icons-material/Pinterest";
-
-import "./Contact.scss";
+import {
+	ContactContainer,
+	Wrapper,
+	Input,
+	Button,
+	IconsContainer,
+} from "./Contact.styles";
 
 const Contact = () => {
 	return (
-		<div className="contact">
-			<div className="wrapper">
+		<ContactContainer>
+			<Wrapper>
 				<span className="contact-text">BE IN TOUCH WITH US:</span>
 				<div className="mail">
-					<input type="text" placeholder="Enter your e-mail..." />
-					<button>JOIN US</button>
+					<Input type="text" placeholder="Enter your e-mail..." />
+					<Button>JOIN US</Button>
 				</div>
-				<div className="icons">
+				<IconsContainer>
 					<FacebookIcon />
 					<InstagramIcon />
 					<TwitterIcon />
 					<GoogleIcon />
 					<PinterestIcon />
-				</div>
-			</div>
-		</div>
+				</IconsContainer>
+			</Wrapper>
+		</ContactContainer>
 	);
 };
 

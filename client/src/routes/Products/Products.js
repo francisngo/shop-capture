@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import ProductPreview from "../../components/ProductPreview/ProductPreview";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import Spinner from "../../components/Spinner/Spinner";
 import { CategoriesContext } from "../../contexts/CategoriesContext";
 
@@ -78,7 +78,7 @@ const Products = () => {
 					) : (
 						<>
 							{products.map((item) => (
-								<ProductPreview key={item.id} {...item} />
+								<ProductCard key={item.id} {...item} />
 							))}
 						</>
 					)}
