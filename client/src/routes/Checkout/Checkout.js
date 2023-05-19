@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import CheckoutItem from "../../components/CheckoutItem/CheckoutItem";
+import Button from "../../components/Button/Button";
 import { CartContext } from "../../contexts/CartContext";
 import {
 	CartContainer,
@@ -10,6 +11,13 @@ import {
 
 const Checkout = () => {
 	const { cartItems, cartTotal } = useContext(CartContext);
+
+	const handlePayment = () => {
+		try {
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<CartContainer>
@@ -34,6 +42,7 @@ const Checkout = () => {
 				<CheckoutItem key={cartItem.id} cartItem={cartItem} />
 			))}
 			<Total>{`Total: $${cartTotal}`}</Total>
+			<Button>Place Order</Button>
 		</CartContainer>
 	);
 };

@@ -1,6 +1,6 @@
-import gql from "graphql-tag";
+const gql = require("graphql-tag");
 
-const typeDefs = gql`
+module.exports = gql`
 	type CategoryItem {
 		id: Int
 		imageUrl: String
@@ -37,5 +37,3 @@ const typeDefs = gql`
 		product(id: Int!): Product
 	}
 `;
-
-export default typeDefs;

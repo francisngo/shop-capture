@@ -1,6 +1,5 @@
-import path from 'path';
-import admin from 'firebase-admin';
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const path = require('path');
+const admin = require('firebase-admin');
 const serviceAccount = path.resolve(__dirname, '../config/service-account.json');
 
 admin.initializeApp({
@@ -21,7 +20,7 @@ interface Category {
     items: [CategoryItem]
 }
 
-const resolvers = {
+module.exports = {
     Query: {
         categories: async () => {
             const snapshot = await db
@@ -77,5 +76,3 @@ const resolvers = {
         }
     }
 }
-
-export default resolvers;
