@@ -7,6 +7,7 @@ module.exports = gql`
 		altImg: String
 		name: String
 		price: Int
+		priceId: String
 	}
 
 	type Category {
@@ -20,6 +21,7 @@ module.exports = gql`
 		altImg: String
 		name: String
 		price: Int
+		priceId: String
 	}
 
 	type Product {
@@ -28,6 +30,7 @@ module.exports = gql`
 		altImg: String
 		name: String
 		price: Int
+		priceId: String
 	}
 
 	type Query {

@@ -12,10 +12,11 @@ const CATEGORIES = gql`
 			title
 			items {
 				id
+				name
 				imageUrl
 				altImg
 				price
-				name
+				priceId
 			}
 		}
 	}

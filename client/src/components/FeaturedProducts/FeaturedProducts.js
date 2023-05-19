@@ -7,11 +7,12 @@ import "./FeaturedProducts.scss";
 const FEATURED_PRODUCTS = gql`
 	query Query {
 		featuredProducts {
-			price
+			id
 			name
 			imageUrl
 			altImg
-			id
+			price
+			priceId
 		}
 	}
 `;

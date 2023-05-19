@@ -11,8 +11,9 @@ const typeDefs = require('./schemas/categories.typeDefs.js');
 const resolvers = require('./resolvers/categories.resolver.js');
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(morgan("combined"));
+app.use(bodyParser.json())
 const stripe = require('stripe')(process.env.STRIPE_API_KEY);
 
 (async () => {
@@ -31,29 +32,27 @@ const stripe = require('stripe')(process.env.STRIPE_API_KEY);
     );
 
     app.post('/create-checkout-session', async (req, res) => {
-        const body = req.body;
-        console.log('body: ', body);
-        const session = await stripe.checkout.sessions.create({
-            line_items: [
-                {
-                    price: 1000,
-                    quantity: 1,
-                }
-            ],
-            mode: 'payment',
-            success_url: `${process.env.CLIENT_URL}?success=true`,
-            cancel_url: `${process.env.CLIENT_URL}?canceled=true`,
-            shipping_address_collection: { allowed_countries: ['US'] },
-            payment_method_types: ['card'],
-        });
-
-        // TODO: write order to database
-
-        res.redirect(303, session.url);
+        try {
+            const { products = [] } = req.body
+            const session = await stripe.checkout.sessions.create({
+                line_items: products,
+                mode: 'payment',
+                success_url: `${process.env.CLIENT_URL}/order-confirmation`,
+                cancel_url: `${process.env.CLIENT_URL}`,
+                shipping_address_collection: { allowed_countries: ['US'] },
+                payment_method_types: ['card'],
+            });
+            res.send(JSON.stringify({
+                url: session.url
+            }));
+        } catch(error) {
+            console.log(error);
+        }
     });
 
+    const PORT = process.env.PORT || 4000;
     await new Promise<void>((resolve) =>
-        httpServer.listen({ port: 4000 }, resolve)
+        httpServer.listen({ port: PORT }, resolve)
     );
     console.log(`🚀 Server ready at http://localhost:4000`);
 })();

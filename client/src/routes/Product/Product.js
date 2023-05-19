@@ -16,6 +16,7 @@ const PRODUCT = gql`
 			imageUrl
 			altImg
 			price
+			priceId
 		}
 	}
 `;
@@ -23,7 +24,7 @@ const PRODUCT = gql`
 const Product = () => {
 	const { id } = useParams();
 	const productId = parseInt(id, 10);
-	const { loading, error, data } = useQuery(PRODUCT, {
+	const { data } = useQuery(PRODUCT, {
 		variables: { productId },
 	});
 	const [images, setImages] = useState([]);

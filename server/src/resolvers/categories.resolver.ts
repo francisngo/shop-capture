@@ -13,6 +13,7 @@ interface CategoryItem {
     altImg: string,
     name: string,
     price: number,
+    priceId: string,
 }
 
 interface Category {
