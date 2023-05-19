@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import { useNavigate } from "react-router-dom";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Button from "../Button/Button";
@@ -13,17 +13,25 @@ import {
 	EmptyMessage,
 } from "./Cart.styles";
 
-const Cart = () => {
+interface CartItem {
+	id: number;
+	imageUrl: string;
+	name: string;
+	quantity: number;
+	price: number;
+}
+
+const Cart: FC = () => {
 	const { cartItems, cartTotal, clearItemFromCart } = useContext(CartContext);
 	const navigate = useNavigate();
 
 	const goToCheckoutHandler = () => navigate("/checkout");
-	const clearItemFromCartHandler = (cartItem) => clearItemFromCart(cartItem);
+	const clearItemFromCartHandler = (cartItem: CartItem) => clearItemFromCart(cartItem);
 
 	return (
 		<CartContainer>
 			{cartItems.length ? (
-				cartItems.map((item) => (
+				(cartItems as CartItem[]).map((item: CartItem) => (
 					<Item key={item.id}>
 						<Image src={item.imageUrl} alt={item.name} />
 						<Details>
