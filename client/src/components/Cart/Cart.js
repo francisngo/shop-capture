@@ -3,8 +3,15 @@ import { useNavigate } from "react-router-dom";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Button from "../Button/Button";
 import { CartContext } from "../../contexts/CartContext";
-import { EmptyMessage } from "./Cart.styles";
-import "./Cart.scss";
+import {
+	CartContainer,
+	Item,
+	Image,
+	Details,
+	Delete,
+	Total,
+	EmptyMessage,
+} from "./Cart.styles";
 
 const Cart = () => {
 	const { cartItems, cartTotal, clearItemFromCart } = useContext(CartContext);
@@ -14,34 +21,31 @@ const Cart = () => {
 	const clearItemFromCartHandler = (cartItem) => clearItemFromCart(cartItem);
 
 	return (
-		<div className="cart-container">
+		<CartContainer>
 			{cartItems.length ? (
 				cartItems.map((item) => (
-					<div className="item" key={item.id}>
-						<img src={item.imageUrl} alt={item.name} />
-						<div className="details">
+					<Item key={item.id}>
+						<Image src={item.imageUrl} alt={item.name} />
+						<Details>
 							<p>{item.name}</p>
 							<div className="price">
 								{item.quantity} x ${item.price}
 							</div>
-						</div>
-						<div
-							className="delete"
-							onClick={() => clearItemFromCartHandler(item)}
-						>
+						</Details>
+						<Delete onClick={() => clearItemFromCartHandler(item)}>
 							<DeleteOutlineIcon />
-						</div>
-					</div>
+						</Delete>
+					</Item>
 				))
 			) : (
 				<EmptyMessage>Your cart is empty</EmptyMessage>
 			)}
-			<div className="total">
+			<Total>
 				<span>Subtotal</span>
 				<span>{`$${cartTotal}`}</span>
-			</div>
+			</Total>
 			<Button onClick={goToCheckoutHandler}>Proceed To Checkout</Button>
-		</div>
+		</CartContainer>
 	);
 };
 

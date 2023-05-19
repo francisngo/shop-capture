@@ -1,73 +1,98 @@
 import { Link } from "react-router-dom";
-import "./CategoryGrid.scss";
+import {
+	CategoryGridContainer,
+	Column,
+	ColumnLarge,
+	Row,
+	Button,
+	Image,
+} from "./CategoryGrid.styles";
 
 const CategoryGrid = () => {
 	return (
-		<div className="category-grid">
-			<div className="col">
-				<div className="row">
-					<img src="https://images.pexels.com/photos/16828894/pexels-photo-16828894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-					<button>
+		<CategoryGridContainer>
+			<Column>
+				<Row>
+					<Image
+						src="https://images.pexels.com/photos/16828894/pexels-photo-16828894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+						alt="cameras"
+					/>
+					<Button>
 						<Link className="link" to="/products/cameras">
 							Cameras
 						</Link>
-					</button>
-				</div>
-				<div className="row">
-					<img src="https://images.pexels.com/photos/16828889/pexels-photo-16828889.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-					<button>
+					</Button>
+				</Row>
+				<Row>
+					<Image
+						src="https://images.pexels.com/photos/16828889/pexels-photo-16828889.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+						alt="filters"
+					/>
+					<Button>
 						<Link className="link" to="/products/filters">
 							Filters
 						</Link>
-					</button>
-				</div>
-			</div>
-			<div className="col">
-				<div className="row">
-					<img src="https://images.pexels.com/photos/16828890/pexels-photo-16828890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-					<button>
+					</Button>
+				</Row>
+			</Column>
+			<Column>
+				<Row>
+					<Image
+						src="https://images.pexels.com/photos/16828890/pexels-photo-16828890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+						alt="lenses"
+					/>
+					<Button>
 						<Link className="link" to="/products/lenses">
 							Lenses
 						</Link>
-					</button>
-				</div>
-			</div>
-			<div className="col col-large">
-				<div className="row">
-					<div className="col">
-						<div className="row">
-							<img src="https://images.pexels.com/photos/16828888/pexels-photo-16828888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-							<button>
+					</Button>
+				</Row>
+			</Column>
+			<ColumnLarge>
+				<Row>
+					<Column>
+						<Row>
+							<Image
+								src="https://images.pexels.com/photos/16828888/pexels-photo-16828888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+								alt="microphones"
+							/>
+							<Button>
 								<Link
 									className="link"
 									to="/products/microphones"
 								>
 									Microphones
 								</Link>
-							</button>
-						</div>
-					</div>
-					<div className="col">
-						<div className="row">
-							<img src="https://images.pexels.com/photos/16828891/pexels-photo-16828891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-							<button>
+							</Button>
+						</Row>
+					</Column>
+					<Column>
+						<Row>
+							<Image
+								src="https://images.pexels.com/photos/16828891/pexels-photo-16828891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+								alt="tripods"
+							/>
+							<Button>
 								<Link className="link" to="/products/tripods">
 									Tripods
 								</Link>
-							</button>
-						</div>
-					</div>
-				</div>
-				<div className="row">
-					<img src="https://images.pexels.com/photos/16828892/pexels-photo-16828892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-					<button>
+							</Button>
+						</Row>
+					</Column>
+				</Row>
+				<Row>
+					<Image
+						src="https://images.pexels.com/photos/16828892/pexels-photo-16828892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+						alt="backpacks"
+					/>
+					<Button>
 						<Link className="link" to="/products/backpacks">
 							Backpacks
 						</Link>
-					</button>
-				</div>
-			</div>
-		</div>
+					</Button>
+				</Row>
+			</ColumnLarge>
+		</CategoryGridContainer>
 	);
 };
 
