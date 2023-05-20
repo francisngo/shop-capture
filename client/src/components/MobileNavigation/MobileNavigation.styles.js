@@ -17,7 +17,7 @@ export const LinksWrapper = styled.ul`
 	width: 100%;
 	flex-direction: column;
 	position: fixed;
-	top: 100px;
+	top: 90px;
 	left: 0;
 	z-index: 99;
 `;

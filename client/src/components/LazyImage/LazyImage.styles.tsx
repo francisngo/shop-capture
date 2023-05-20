@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-export const ImageContainer = styled.div`
+interface ImageContainerProps {
+	$isLoading: boolean;
+	loadingUrl: string;
+	imgSrc: string;
+  }
+  
+
+export const ImageContainer = styled.div<ImageContainerProps>`
 	width: 100%;
 	height: 100%;
 	background-size: cover;

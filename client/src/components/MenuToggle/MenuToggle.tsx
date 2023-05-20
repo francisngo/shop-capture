@@ -1,7 +1,33 @@
-import { motion } from "framer-motion";
+import { SVGProps, AnimationEventHandler } from 'react';
+import { motion} from "framer-motion";
 import { Button } from "./MenuToggle.styles";
 
-const Path = (props) => (
+interface MenuToggleProps {
+	toggle: () => void,
+	isOpen: boolean;
+}
+
+type PathProps = {
+	d?: string;
+	stroke?: string;
+	animate: string;
+	initial: boolean;
+	variants: {
+	  closed: {
+		d?: string;
+		stroke?: string;
+		opacity?: number;
+	  };
+	  open: {
+		d?: string;
+		stroke?: string;
+		opacity?: number;
+	  };
+	};
+	transition: { duration: number };
+};
+
+const Path = (props: PathProps) => (
 	<motion.path
 		fill="transparent"
 		strokeLinecap="round"
@@ -12,7 +38,7 @@ const Path = (props) => (
 
 const transition = { duration: 0.33 };
 
-const MenuToggle = ({ toggle, isOpen }) => {
+const MenuToggle = ({ toggle, isOpen }: MenuToggleProps) => {
 	return (
 		<Button onClick={toggle}>
 			<svg width="23" height="23" viewBox="0 0 23 23">

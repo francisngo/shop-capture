@@ -1,7 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { ImageContainer } from "./LazyImage.styles";
 
-const LazyImage = ({ loadingUrl, imgSrc, ...props }) => {
+interface LazyImageProps {
+	$isLoading: boolean;
+	loadingUrl: string;
+	imgSrc: string;
+	[key: string]: any;
+}
+
+const LazyImage: FC<LazyImageProps> = ({ loadingUrl, imgSrc }) => {
 	const [isLoading, setLoading] = useState(false);
 
 	useEffect(() => {
@@ -15,7 +22,6 @@ const LazyImage = ({ loadingUrl, imgSrc, ...props }) => {
 			$isLoading={!isLoading}
 			loadingUrl={loadingUrl}
 			imgSrc={imgSrc}
-			{...props}
 		/>
 	);
 };
