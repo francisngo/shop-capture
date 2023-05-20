@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Link } from "react-router-dom";
 import {
 	CategoryGridContainer,
@@ -8,7 +9,7 @@ import {
 	Image,
 } from "./CategoryGrid.styles";
 
-const CategoryGrid = () => {
+const CategoryGrid: FC = () => {
 	return (
 		<CategoryGridContainer>
 			<Column>

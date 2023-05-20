@@ -1,12 +1,13 @@
 import { createContext, useState, useEffect, ReactNode, Dispatch, SetStateAction } from "react";
 
-interface Product {
+export interface Product {
 	id: number;
 	name: string;
 	price: number;
+	imageUrl: string;
 }
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
 	quantity: number;
 }
 

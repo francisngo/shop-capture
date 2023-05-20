@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { useContext, FC } from "react";
+import { CartItem, CartContext } from "../../contexts/CartContext";
 import {
 	CheckoutItemContainer,
 	ImageContainer,
@@ -10,7 +10,11 @@ import {
 	RemoveButton,
 } from "./CheckoutItem.styles";
 
-const CheckoutItem = ({ cartItem }) => {
+interface Props {
+	cartItem: CartItem
+}
+
+const CheckoutItem: FC<Props> = ({ cartItem }) => {
 	const { name, imageUrl, price, quantity } = cartItem;
 	const { clearItemFromCart, addItemToCart, removeItemFromCart } =
 		useContext(CartContext);
