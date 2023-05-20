@@ -5,7 +5,6 @@ import { PersistGate } from "redux-persist/integration/react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { store, persistor } from "./store/store";
 import { CategoriesProvider } from "./contexts/CategoriesContext";
-import { CartProvider } from "./contexts/CartContext";
 import App from "./App";
 import "./index.css";
 
@@ -22,9 +21,7 @@ root.render(
 			<PersistGate loading={null} persistor={persistor}>
 				<ApolloProvider client={client}>
 					<CategoriesProvider>
-						<CartProvider>
-							<App />
-						</CartProvider>
+						<App />
 					</CategoriesProvider>
 				</ApolloProvider>
 			</PersistGate>

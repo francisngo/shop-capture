@@ -60,3 +60,9 @@ export const EmptyMessage = styled.span`
 	justify-content: center;
 	margin: 50px auto;
 `;
+
+export const ButtonContainer = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: center;
+`;

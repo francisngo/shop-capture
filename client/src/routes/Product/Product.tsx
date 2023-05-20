@@ -1,4 +1,5 @@
-import { useState, useContext, useEffect, FC } from "react";
+import { useState, useEffect, FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -6,7 +7,12 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
 import Button from "../../components/Button/Button";
 import Spinner from "../../components/Spinner/Spinner";
-import { CartContext } from "../../contexts/CartContext";
+import {
+	addItemToCart,
+	removeItemFromCart,
+	getProductQuantity,
+} from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
 import {
 	ProductContainer,
 	SpinnerContainer,
@@ -45,6 +51,7 @@ const PRODUCT = gql`
 `;
 
 const Product: FC = () => {
+	const dispatch = useDispatch();
 	const { id = "" } = useParams<{ id?: string }>();
 	const productId = parseInt(id, 10);
 	const { loading, data } = useQuery(PRODUCT, {
@@ -60,8 +67,7 @@ const Product: FC = () => {
 		price: 0,
 		priceId: "",
 	});
-	const { addItemToCart, removeItemFromCart, getProductQuantity } =
-		useContext(CartContext);
+	const cartItems = useSelector(selectCartItems);
 
 	useEffect(() => {
 		if (data) {
@@ -72,13 +78,14 @@ const Product: FC = () => {
 	}, [product, data]);
 
 	const addProductToCart = () => {
-		addItemToCart(product);
+		dispatch(addItemToCart(cartItems, product));
 	};
 
 	const addItemToCartHandler = () => {
-		addItemToCart(product);
+		dispatch(addItemToCart(cartItems, product));
 	};
-	const removeItemToCartHandler = () => removeItemFromCart(product);
+	const removeItemToCartHandler = () =>
+		dispatch(removeItemFromCart(cartItems, product));
 
 	const { name, price } = product;
 
@@ -113,7 +120,7 @@ const Product: FC = () => {
 						<p>Description</p>
 						<Quantity>
 							<button onClick={removeItemToCartHandler}>-</button>
-							{getProductQuantity(product)}
+							{getProductQuantity(cartItems, product)}
 							<button onClick={addItemToCartHandler}>+</button>
 						</Quantity>
 						<ButtonsContainer>

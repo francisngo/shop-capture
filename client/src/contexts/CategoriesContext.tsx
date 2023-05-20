@@ -43,23 +43,34 @@ const CATEGORIES = gql`
 
 export const CategoriesContext = createContext<CategoriesContextType>({
 	loading: false,
-    error: undefined,
-    categoriesMap: {},
+	error: undefined,
+	categoriesMap: {},
 });
 
-
 export const CategoriesProvider = ({ children }: CategoriesProviderProps) => {
-	const [categoriesMap, setCategoriesMap] = useState<{ [key: string]: CategoryItem[] }>({});
-	const { loading, error, data }: QueryResult<any, Record<string, any>> = useQuery(CATEGORIES);
+	const [categoriesMap, setCategoriesMap] = useState<{
+		[key: string]: CategoryItem[];
+	}>({});
+	const {
+		loading,
+		error,
+		data,
+	}: QueryResult<any, Record<string, any>> = useQuery(CATEGORIES);
 
 	useEffect(() => {
 		if (data) {
 			const { categories }: { categories: Category[] } = data;
-			const categoriesData = categories.reduce((acc: { [key: string]: CategoryItem[] }, category: Category) => {
-				const { title, items } = category;
-				acc[title.toLowerCase()] = items;
-				return acc;
-			}, {});
+			const categoriesData = categories.reduce(
+				(
+					acc: { [key: string]: CategoryItem[] },
+					category: Category
+				) => {
+					const { title, items } = category;
+					acc[title.toLowerCase()] = items;
+					return acc;
+				},
+				{}
+			);
 			setCategoriesMap(categoriesData);
 		}
 	}, [data]);

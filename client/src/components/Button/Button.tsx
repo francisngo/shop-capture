@@ -1,4 +1,4 @@
-import { FC, ButtonHTMLAttributes } from 'react';
+import { FC, ButtonHTMLAttributes } from "react";
 
 import {
 	BaseButton,
@@ -11,7 +11,7 @@ export enum BUTTON_TYPES_CLASSES {
 	base = "base",
 	google = "google-sign-in",
 	inverted = "inverted",
-};
+}
 
 const getButton = (buttonType = BUTTON_TYPES_CLASSES.base): typeof BaseButton =>
 	({
@@ -23,9 +23,14 @@ const getButton = (buttonType = BUTTON_TYPES_CLASSES.base): typeof BaseButton =>
 export type ButtonProps = {
 	buttonType?: BUTTON_TYPES_CLASSES;
 	isLoading?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: FC<ButtonProps> = ({ children, buttonType, isLoading = false, ...props }) => {
+const Button: FC<ButtonProps> = ({
+	children,
+	buttonType,
+	isLoading = false,
+	...props
+}) => {
 	const CustomButton = getButton(buttonType);
 	return (
 		<CustomButton disabled={isLoading} {...props}>

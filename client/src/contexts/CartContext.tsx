@@ -1,4 +1,11 @@
-import { createContext, useState, useEffect, ReactNode, Dispatch, SetStateAction } from "react";
+import {
+	createContext,
+	useState,
+	useEffect,
+	ReactNode,
+	Dispatch,
+	SetStateAction,
+} from "react";
 
 export interface Product {
 	id: number;
@@ -29,15 +36,15 @@ interface CartProviderProps {
 }
 
 export const CartContext = createContext<CartContextType>({
-  isCartOpen: false,
-  toggleCart: () => {},
-  cartItems: [],
-  addItemToCart: () => {},
-  removeItemFromCart: () => {},
-  clearItemFromCart: () => {},
-  cartCount: 0,
-  cartTotal: 0,
-  getProductQuantity: () => 0,
+	isCartOpen: false,
+	toggleCart: () => {},
+	cartItems: [],
+	addItemToCart: () => {},
+	removeItemFromCart: () => {},
+	clearItemFromCart: () => {},
+	cartCount: 0,
+	cartTotal: 0,
+	getProductQuantity: () => 0,
 });
 
 const addCartItem = (cartItems: CartItem[], productToAdd: Product) => {
@@ -76,7 +83,9 @@ const clearCartItem = (cartItems: CartItem[], productToClear: Product) =>
 	cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
 
 const getQuantity = (cartItems: CartItem[], item: Product) => {
-	const product = (cartItems as CartItem[]).find((cartItem) => cartItem.id === item.id);
+	const product = (cartItems as CartItem[]).find(
+		(cartItem) => cartItem.id === item.id
+	);
 	return product ? product.quantity : 0;
 };
 

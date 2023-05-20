@@ -1,7 +1,12 @@
-import { useContext, FC } from "react";
+import { FC } from "react";
+import { useSelector } from "react-redux";
 import CheckoutItem from "../../components/CheckoutItem/CheckoutItem";
 import Button from "../../components/Button/Button";
-import { CartContext } from "../../contexts/CartContext";
+import {
+	selectCartItems,
+	selectCartTotal,
+} from "../../store/cart/cart.selector";
+import { CartItem } from "../../store/cart/cart.types";
 import {
 	CartContainer,
 	CartHeader,
@@ -10,11 +15,12 @@ import {
 } from "./Checkout.styles";
 
 const Checkout: FC = () => {
-	const { cartItems, cartTotal } = useContext(CartContext);
+	const cartItems = useSelector(selectCartItems);
+	const cartTotal = useSelector(selectCartTotal);
 
 	const handleCheckout = async () => {
 		try {
-		const products = cartItems.map((cartItem) => ({
+			const products = cartItems.map((cartItem: CartItem) => ({
 				price: cartItem.priceId,
 				quantity: cartItem.quantity,
 			}));
@@ -54,11 +60,11 @@ const Checkout: FC = () => {
 					<span>Remove</span>
 				</HeaderBlock>
 			</CartHeader>
-			{cartItems.map((cartItem) => (
+			{cartItems.map((cartItem: CartItem) => (
 				<CheckoutItem key={cartItem.id} cartItem={cartItem} />
 			))}
 			<Total>{`Total: $${cartTotal}`}</Total>
-			<Button onClick={handleCheckout}>Place Order</Button>
+			<Button onClick={handleCheckout}>Proceed To Checkout</Button>
 		</CartContainer>
 	);
 };

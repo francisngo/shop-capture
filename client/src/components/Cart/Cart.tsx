@@ -1,8 +1,14 @@
-import { useContext, FC } from "react";
+import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Button from "../Button/Button";
-import { CartContext } from "../../contexts/CartContext";
+import {
+	selectCartItems,
+	selectCartTotal,
+} from "../../store/cart/cart.selector";
+import { clearItemFromCart } from "../../store/cart/cart.action";
+import { CartItem } from "../../store/cart/cart.types";
 import {
 	CartContainer,
 	Item,
@@ -11,23 +17,18 @@ import {
 	Delete,
 	Total,
 	EmptyMessage,
+	ButtonContainer,
 } from "./Cart.styles";
 
-interface CartItem {
-	id: number;
-	imageUrl: string;
-	name: string;
-	quantity: number;
-	price: number;
-	priceId: string;
-}
-
 const Cart: FC = () => {
-	const { cartItems, cartTotal, clearItemFromCart } = useContext(CartContext);
+	const dispatch = useDispatch();
+	const cartItems = useSelector(selectCartItems);
+	const cartTotal = useSelector(selectCartTotal);
 	const navigate = useNavigate();
 
 	const goToCheckoutHandler = () => navigate("/checkout");
-	const clearItemFromCartHandler = (cartItem: CartItem) => clearItemFromCart(cartItem);
+	const clearItemFromCartHandler = (cartItem: CartItem) =>
+		dispatch(clearItemFromCart(cartItems, cartItem));
 
 	return (
 		<CartContainer>
@@ -53,7 +54,9 @@ const Cart: FC = () => {
 				<span>Subtotal</span>
 				<span>{`$${cartTotal}`}</span>
 			</Total>
-			<Button onClick={goToCheckoutHandler}>Proceed To Checkout</Button>
+			<ButtonContainer>
+				<Button onClick={goToCheckoutHandler}>View Cart</Button>
+			</ButtonContainer>
 		</CartContainer>
 	);
 };
