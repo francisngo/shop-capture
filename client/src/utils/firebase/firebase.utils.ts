@@ -24,8 +24,6 @@ import {
 } from "firebase/firestore";
 import fbConfig from "./firebaseConfig.json";
 
-import { CategoryMap } from '../../store/categories/categories.types';
-
 const firebaseConfig = {
 	apiKey: fbConfig.apiKey,
 	authDomain: fbConfig.authDomain,
