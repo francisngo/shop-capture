@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -11,11 +12,11 @@ import {
 	IconsContainer,
 } from "./Contact.styles";
 
-const Contact = () => {
+const Contact: FC = () => {
 	return (
 		<ContactContainer>
 			<Wrapper>
-				<span className="contact-text">BE IN TOUCH WITH US:</span>
+				<span className="contact-text">GET IN TOUCH WITH US:</span>
 				<div className="mail">
 					<Input type="text" placeholder="Enter your e-mail..." />
 					<Button>JOIN US</Button>

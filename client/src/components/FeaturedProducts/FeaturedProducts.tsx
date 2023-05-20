@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { gql, useQuery } from "@apollo/client";
 import ProductCard from "../ProductCard/ProductCard";
 import Spinner from "../Spinner/Spinner";
@@ -8,6 +8,19 @@ import {
 	SpinnerContainer,
 	Bottom,
 } from "./FeaturedProducts.styles";
+
+interface FeaturedProduct {
+	id: string;
+	name: string;
+	imageUrl: string;
+	altImg: string;
+	price: number;
+	priceId: string;
+}
+
+interface FeaturedProductsData {
+	featuredProducts: FeaturedProduct[];
+}
 
 const FEATURED_PRODUCTS = gql`
 	query Query {
@@ -22,9 +35,9 @@ const FEATURED_PRODUCTS = gql`
 	}
 `;
 
-const FeaturedProducts = () => {
-	const { loading, data } = useQuery(FEATURED_PRODUCTS);
-	const [products, setProducts] = useState([]);
+const FeaturedProducts: FC = () => {
+	const { loading, data } = useQuery<FeaturedProductsData>(FEATURED_PRODUCTS);
+	const [products, setProducts] = useState<FeaturedProduct[]>([]);
 
 	useEffect(() => {
 		if (data) {

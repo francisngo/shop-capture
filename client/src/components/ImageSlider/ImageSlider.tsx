@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
 import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
 import {
@@ -9,7 +9,11 @@ import {
 	Icon,
 } from "./ImageSlider.styles";
 
-const ImageSlider = ({ images }) => {
+interface ImageSliderProps {
+	images: { id: string, src: string; name: string }[]
+}
+
+const ImageSlider: FC<ImageSliderProps> = ({ images }) => {
 	const [currentSlide, setCurrentSlide] = useState(0);
 
 	const prevSlide = () => {

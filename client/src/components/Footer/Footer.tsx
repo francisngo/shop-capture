@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { FooterContainer, Copyright } from "./Footer.styles";
 
-const Footer = () => {
+const Footer: FC = () => {
 	return (
 		<FooterContainer>
 			<span className="logo">
