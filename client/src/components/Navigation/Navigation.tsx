@@ -1,12 +1,13 @@
-import { useContext, FC } from "react";
+import { FC } from "react";
+import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { ReactComponent as CaptureLogo } from "../../assets/capture.svg";
 import CartIcon from "../CartIcon/CartIcon";
 import Cart from "../Cart/Cart";
 import MobileNavigation from "../MobileNavigation/MobileNavigation";
-import { UserContext } from "../../contexts/UserContext";
-import { CartContext } from "../../contexts/CartContext";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
 import {
 	NavigationContainer,
 	LeftSection,
@@ -28,8 +29,8 @@ export const DeviceSize = {
 
 const Navigation: FC = () => {
 	const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
-	const { currentUser } = useContext(UserContext);
-	const { isCartOpen } = useContext(CartContext);
+	const currentUser = useSelector(selectCurrentUser);
+	const isCartOpen = useSelector(selectIsCartOpen);
 
 	return (
 		<>

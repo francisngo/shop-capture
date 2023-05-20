@@ -1,13 +1,12 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { AuthError, AuthErrorCodes } from "firebase/auth";
+import { UserCredential, AuthError, AuthErrorCodes } from "firebase/auth";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 import {
 	createAuthUserWithEmailAndPassword,
 	createUserDocumentFromAuth,
-  } from '../../utils/firebase/firebase.utils';
+} from "../../utils/firebase/firebase.utils";
 import { SignInContainer } from "../SignInForm/SignInForm.styles";
-
 
 const defaultFormFields = {
 	displayName: "",
@@ -33,11 +32,17 @@ const SignUpForm = () => {
 		}
 
 		try {
-			const user = await createAuthUserWithEmailAndPassword(
+			const userCredential = await createAuthUserWithEmailAndPassword(
 				email,
 				password
 			);
-			await createUserDocumentFromAuth(user, { displayName });
+			if (!userCredential || !userCredential.user) {
+				throw new Error("User is undefined");
+			} else {
+				await createUserDocumentFromAuth(userCredential.user, {
+					displayName,
+				});
+			}
 			resetFormFields();
 		} catch (error) {
 			if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {

@@ -1,8 +1,9 @@
-import { useState, useContext, FC } from "react";
+import { useState, FC } from "react";
+import { useSelector } from "react-redux";
 import MenuToggle from "../MenuToggle/MenuToggle";
 import CartIcon from "../CartIcon/CartIcon";
-import { UserContext } from "../../contexts/UserContext";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { selectCurrentUser } from "../../store/user/user.selector";
 import {
 	NavLinksContainer,
 	LinksWrapper,
@@ -12,7 +13,7 @@ import {
 
 const MobileNavigation: FC = () => {
 	const [isOpen, setOpen] = useState(false);
-	const { currentUser } = useContext(UserContext);
+	const currentUser = useSelector(selectCurrentUser);
 
 	const toggleMenu = () => setOpen(!isOpen);
 	const handleSignOut = () => {

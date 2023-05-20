@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { UserProvider } from "./contexts/UserContext";
+import { store, persistor } from "./store/store";
 import { CategoriesProvider } from "./contexts/CategoriesContext";
 import { CartProvider } from "./contexts/CartContext";
 import App from "./App";
@@ -16,14 +18,16 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
 	<React.StrictMode>
-		<ApolloProvider client={client}>
-			<UserProvider>
-				<CategoriesProvider>
-					<CartProvider>
-						<App />
-					</CartProvider>
-				</CategoriesProvider>
-			</UserProvider>
-		</ApolloProvider>
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<ApolloProvider client={client}>
+					<CategoriesProvider>
+						<CartProvider>
+							<App />
+						</CartProvider>
+					</CategoriesProvider>
+				</ApolloProvider>
+			</PersistGate>
+		</Provider>
 	</React.StrictMode>
 );

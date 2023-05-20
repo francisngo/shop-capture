@@ -1,5 +1,12 @@
-import { createContext, useState, useEffect, ReactNode, Dispatch, SetStateAction } from "react";
-import { User as FirebaseUser } from 'firebase/auth';
+import {
+	createContext,
+	useState,
+	useEffect,
+	ReactNode,
+	Dispatch,
+	SetStateAction,
+} from "react";
+import { User as FirebaseUser } from "firebase/auth";
 import {
 	createUserDocumentFromAuth,
 	onAuthStateChangedListener,
@@ -13,7 +20,7 @@ interface User {
 
 interface UserContextType {
 	currentUser: User | null;
-	setCurrentUser: Dispatch<SetStateAction<User | null>>
+	setCurrentUser: Dispatch<SetStateAction<User | null>>;
 }
 
 interface UserProviderProps {
@@ -29,14 +36,15 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 	const [currentUser, setCurrentUser] = useState<User | null>(null);
 	const value: UserContextType = { currentUser, setCurrentUser };
 
-
 	useEffect(() => {
-		const unsubscribe = onAuthStateChangedListener((user: FirebaseUser | null) => {
-			if (user) {
-				createUserDocumentFromAuth(user);
+		const unsubscribe = onAuthStateChangedListener(
+			(user: FirebaseUser | null) => {
+				if (user) {
+					createUserDocumentFromAuth(user);
+				}
+				setCurrentUser(user as User | null);
 			}
-			setCurrentUser(user as User | null);
-		});
+		);
 		return unsubscribe;
 	}, []);
 
