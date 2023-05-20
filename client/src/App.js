@@ -7,6 +7,7 @@ import Products from "./routes/Products/Products";
 import Product from "./routes/Product/Product";
 import Authentication from "./routes/Authentication/Authentication";
 import Checkout from "./routes/Checkout/Checkout";
+import Confirmation from "./routes/Confirmation/Confirmation";
 import {
 	onAuthStateChangedListener,
 	createUserDocumentFromAuth,
@@ -24,7 +25,7 @@ const App = () => {
 			dispatch(setCurrentUser(user));
 		});
 		return unsubscribe;
-	}, []);
+	}, [dispatch]);
 
 	const router = createBrowserRouter([
 		{
@@ -50,6 +51,10 @@ const App = () => {
 				{
 					path: "/product/:id",
 					element: <Product />,
+				},
+				{
+					path: "/order-confirmation",
+					element: <Confirmation />,
 				},
 			],
 		},
