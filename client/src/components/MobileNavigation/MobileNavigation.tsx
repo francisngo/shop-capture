@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, FC } from "react";
 import MenuToggle from "../MenuToggle/MenuToggle";
 import CartIcon from "../CartIcon/CartIcon";
 import { UserContext } from "../../contexts/UserContext";
@@ -10,7 +10,7 @@ import {
 	NavLink,
 } from "./MobileNavigation.styles";
 
-const MobileNavigation = () => {
+const MobileNavigation: FC = () => {
 	const [isOpen, setOpen] = useState(false);
 	const { currentUser } = useContext(UserContext);
 

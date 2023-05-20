@@ -3,8 +3,9 @@ import { createContext, useState, useEffect, ReactNode, Dispatch, SetStateAction
 export interface Product {
 	id: number;
 	name: string;
-	price: number;
 	imageUrl: string;
+	price: number;
+	priceId: string;
 }
 
 export interface CartItem extends Product {

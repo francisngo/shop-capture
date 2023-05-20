@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import { useMediaQuery } from "react-responsive";
 import { ReactComponent as CaptureLogo } from "../../assets/capture.svg";
 import CartIcon from "../CartIcon/CartIcon";
@@ -26,7 +26,7 @@ export const DeviceSize = {
 	desktop: 2024,
 };
 
-const Navigation = () => {
+const Navigation: FC = () => {
 	const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 	const { currentUser } = useContext(UserContext);
 	const { isCartOpen } = useContext(CartContext);

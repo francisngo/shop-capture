@@ -1,8 +1,15 @@
+import { FC } from 'react';
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
 import FeaturedProducts from "../../components/FeaturedProducts/FeaturedProducts";
 import CategoryGrid from "../../components/CategoryGrid/CategoryGrid";
 
-const IMAGE_DATA = [
+interface ImageData {
+	id: number;
+	src: string;
+	name: string;
+  }
+
+const IMAGE_DATA: ImageData[] = [
 	{
 		id: 0,
 		src: "https://images.pexels.com/photos/16768785/pexels-photo-16768785.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
@@ -30,7 +37,7 @@ const IMAGE_DATA = [
 	},
 ];
 
-const Home = () => {
+const Home: FC = () => {
 	return (
 		<div className="home-container">
 			<ImageSlider images={IMAGE_DATA} />

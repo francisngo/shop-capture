@@ -19,6 +19,7 @@ interface CartItem {
 	name: string;
 	quantity: number;
 	price: number;
+	priceId: string;
 }
 
 const Cart: FC = () => {

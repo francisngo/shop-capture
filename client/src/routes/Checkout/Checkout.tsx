@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import CheckoutItem from "../../components/CheckoutItem/CheckoutItem";
 import Button from "../../components/Button/Button";
 import { CartContext } from "../../contexts/CartContext";
@@ -9,12 +9,12 @@ import {
 	Total,
 } from "./Checkout.styles";
 
-const Checkout = () => {
+const Checkout: FC = () => {
 	const { cartItems, cartTotal } = useContext(CartContext);
 
 	const handleCheckout = async () => {
 		try {
-			const products = cartItems.map((cartItem) => ({
+		const products = cartItems.map((cartItem) => ({
 				price: cartItem.priceId,
 				quantity: cartItem.quantity,
 			}));

@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Link } from "react-router-dom";
 import {
 	ProductCardContainer,
@@ -6,7 +7,15 @@ import {
 	Prices,
 } from "./ProductCard.styles";
 
-const ProductCard = ({ id, imageUrl, altImg, name, price }) => {
+interface ProductCardProps {
+	id: string;
+	imageUrl: string;
+	altImg: string;
+	name: string;
+	price: number;
+}
+
+const ProductCard: FC<ProductCardProps> = ({ id, imageUrl, altImg, name, price }) => {
 	const oldPrice = Math.round(price * 1.25);
 
 	return (

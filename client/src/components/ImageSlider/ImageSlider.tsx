@@ -10,7 +10,7 @@ import {
 } from "./ImageSlider.styles";
 
 interface ImageSliderProps {
-	images: { id: string, src: string; name: string }[]
+	images: { id: number, src: string; name: string }[]
 }
 
 const ImageSlider: FC<ImageSliderProps> = ({ images }) => {
