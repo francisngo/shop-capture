@@ -8,7 +8,7 @@ import {
 } from "./ProductCard.styles";
 
 interface ProductCardProps {
-	id: string;
+	id: number;
 	imageUrl: string;
 	altImg: string;
 	name: string;

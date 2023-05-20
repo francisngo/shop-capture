@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { gql, useQuery, QueryResult } from "@apollo/client";
 
-interface CategoryItem {
+export interface CategoryItem {
 	id: number;
 	name: string;
 	imageUrl: string;

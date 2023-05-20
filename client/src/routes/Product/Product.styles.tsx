@@ -11,6 +11,12 @@ export const ProductContainer = styled.div`
     }
 `;
 
+export const SpinnerContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	text-align: center;
+`;
+
 export const LeftContainer = styled.div`
     flex: 1;
     display: flex;

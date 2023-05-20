@@ -10,7 +10,7 @@ import {
 } from "./FeaturedProducts.styles";
 
 interface FeaturedProduct {
-	id: string;
+	id: number;
 	name: string;
 	imageUrl: string;
 	altImg: string;
