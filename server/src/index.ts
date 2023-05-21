@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 const { ApolloServer } = require('@apollo/server');
 const { ApolloServerPluginDrainHttpServer } = require('@apollo/server/plugin/drainHttpServer')
 const { expressMiddleware } = require('@apollo/server/express4')
-const typeDefs = require('./schemas/categories.typeDefs.js');
-const resolvers = require('./resolvers/categories.resolver.js');
+const typeDefs = require('./schemas/categories.typeDefs');
+const resolvers = require('./resolvers/categories.resolver');
 
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL }));
