@@ -4,7 +4,9 @@ export const ProductCardContainer = styled.div`
 	width: 330px;
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	padding: 10px;
+	-webkit-box-shadow: 0px 0px 7px -5px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 0px 7px -5px rgba(0, 0, 0, 0.5);
 `;
 
 export const ImageContainer = styled.div`
@@ -34,22 +36,17 @@ export const ImageContainer = styled.div`
 
 export const Name = styled.h2`
 	font-size: 16px;
-	font-weight: 400;
+	font-weight: 500;
 	margin-bottom: 0;
+	text-align: center;
 `;
 
 export const Prices = styled.div`
-	display: flex;
-	justify-content: space-between;
+	text-align: center;
 	gap: 20px;
 
-	h3 {
+	p {
 		font-size: 18px;
-		font-weight: 500;
-
-		&:first-child {
-			color: gray;
-			text-decoration: line-through;
-		}
+		font-weight: 700;
 	}
 `;

@@ -1,5 +1,9 @@
-import { FC } from 'react';
+import { FC } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../Button/Button";
+import { addItemToCart } from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
 import {
 	ProductCardContainer,
 	ImageContainer,
@@ -13,25 +17,38 @@ interface ProductCardProps {
 	altImg: string;
 	name: string;
 	price: number;
+	priceId: string;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ id, imageUrl, altImg, name, price }) => {
-	const oldPrice = Math.round(price * 1.25);
+const ProductCard: FC<ProductCardProps> = ({
+	id,
+	imageUrl,
+	altImg,
+	name,
+	price,
+	priceId,
+}) => {
+	const dispatch = useDispatch();
+	const cartItems = useSelector(selectCartItems);
+	const product = { id, imageUrl, altImg, name, price, priceId };
 
+	const addProductToCart = () => {
+		dispatch(addItemToCart(cartItems, product));
+	};
 	return (
-		<Link to={`/product/${id}`}>
-			<ProductCardContainer>
+		<ProductCardContainer>
+			<Link to={`/product/${id}`}>
 				<ImageContainer>
 					<img className="primary" src={imageUrl} />
 					<img className="secondary" src={altImg} />
 				</ImageContainer>
-				<Name>{name}</Name>
-				<Prices>
-					<h3>{`$${oldPrice}`}</h3>
-					<h3>{`$${price}`}</h3>
-				</Prices>
-			</ProductCardContainer>
-		</Link>
+			</Link>
+			<Name>{name}</Name>
+			<Prices>
+				<p>{`$${price}`}</p>
+			</Prices>
+			<Button onClick={addProductToCart}>Add To Cart</Button>
+		</ProductCardContainer>
 	);
 };
 
