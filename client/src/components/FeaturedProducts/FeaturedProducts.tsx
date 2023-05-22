@@ -44,7 +44,7 @@ const FeaturedProducts: FC = () => {
 			const { featuredProducts } = data;
 			setProducts(featuredProducts);
 		}
-	});
+	}, [data]);
 
 	return (
 		<FeaturedProductsContainer>

@@ -30,7 +30,7 @@ export const DeviceSize = {
 	desktop: 2024,
 };
 
-const Navigation = () => {
+const Navigation: FC = () => {
 	const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 	const currentUser = useSelector(selectCurrentUser);
 	const isCartOpen = useSelector(selectIsCartOpen);

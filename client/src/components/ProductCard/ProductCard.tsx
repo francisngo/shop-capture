@@ -39,8 +39,8 @@ const ProductCard: FC<ProductCardProps> = ({
 		<ProductCardContainer>
 			<Link to={`/product/${id}`}>
 				<ImageContainer>
-					<img className="primary" src={imageUrl} />
-					<img className="secondary" src={altImg} />
+					<img className="primary" src={imageUrl} alt={name} />
+					<img className="secondary" src={altImg} alt={name} />
 				</ImageContainer>
 			</Link>
 			<Name>{name}</Name>

@@ -1,9 +1,8 @@
-import { SVGProps, AnimationEventHandler } from 'react';
-import { motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "./MenuToggle.styles";
 
 interface MenuToggleProps {
-	toggle: () => void,
+	toggle: () => void;
 	isOpen: boolean;
 }
 
@@ -13,16 +12,16 @@ type PathProps = {
 	animate: string;
 	initial: boolean;
 	variants: {
-	  closed: {
-		d?: string;
-		stroke?: string;
-		opacity?: number;
-	  };
-	  open: {
-		d?: string;
-		stroke?: string;
-		opacity?: number;
-	  };
+		closed: {
+			d?: string;
+			stroke?: string;
+			opacity?: number;
+		};
+		open: {
+			d?: string;
+			stroke?: string;
+			opacity?: number;
+		};
 	};
 	transition: { duration: number };
 };
