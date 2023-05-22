@@ -12,6 +12,13 @@ export const CartContainer = styled.div`
 	box-shadow: 0px 0px 7px -5px rgba(0, 0, 0, 0.5);
 `;
 
+export const CartItems = styled.div`
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	overflow: scroll;
+`;
+
 export const Item = styled.div`
 	display: flex;
 	justify-content: flex-start;

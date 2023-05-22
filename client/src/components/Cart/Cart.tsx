@@ -7,10 +7,11 @@ import {
 	selectCartItems,
 	selectCartTotal,
 } from "../../store/cart/cart.selector";
-import { clearItemFromCart } from "../../store/cart/cart.action";
+import { clearItemFromCart, setIsCartOpen } from "../../store/cart/cart.action";
 import { CartItem } from "../../store/cart/cart.types";
 import {
 	CartContainer,
+	CartItems,
 	Item,
 	Image,
 	Details,
@@ -26,30 +27,38 @@ const Cart: FC = () => {
 	const cartTotal = useSelector(selectCartTotal);
 	const navigate = useNavigate();
 
-	const goToCheckoutHandler = () => navigate("/checkout");
+	const goToCheckoutHandler = () => {
+		dispatch(setIsCartOpen(false));
+		navigate("/checkout");
+	};
+
 	const clearItemFromCartHandler = (cartItem: CartItem) =>
 		dispatch(clearItemFromCart(cartItems, cartItem));
 
 	return (
 		<CartContainer>
-			{cartItems.length ? (
-				(cartItems as CartItem[]).map((item: CartItem) => (
-					<Item key={item.id}>
-						<Image src={item.imageUrl} alt={item.name} />
-						<Details>
-							<p>{item.name}</p>
-							<div className="price">
-								{item.quantity} x ${item.price}
-							</div>
-						</Details>
-						<Delete onClick={() => clearItemFromCartHandler(item)}>
-							<DeleteOutlineIcon />
-						</Delete>
-					</Item>
-				))
-			) : (
-				<EmptyMessage>Your cart is empty</EmptyMessage>
-			)}
+			<CartItems>
+				{cartItems.length ? (
+					(cartItems as CartItem[]).map((item: CartItem) => (
+						<Item key={item.id}>
+							<Image src={item.imageUrl} alt={item.name} />
+							<Details>
+								<p>{item.name}</p>
+								<div className="price">
+									{item.quantity} x ${item.price}
+								</div>
+							</Details>
+							<Delete
+								onClick={() => clearItemFromCartHandler(item)}
+							>
+								<DeleteOutlineIcon />
+							</Delete>
+						</Item>
+					))
+				) : (
+					<EmptyMessage>Your cart is empty</EmptyMessage>
+				)}
+			</CartItems>
 			<Total>
 				<span>Subtotal</span>
 				<span>{`$${cartTotal}`}</span>

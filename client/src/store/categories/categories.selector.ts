@@ -18,3 +18,8 @@ export const selectCategories = createSelector(
             return acc;
         })
 )
+
+export const selectIsSearchOpen = createSelector(
+    [selectCategoryReducer],
+    (categories) => categories.isSearchOpen
+)

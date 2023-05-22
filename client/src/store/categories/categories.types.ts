@@ -18,4 +18,5 @@ export interface CategoryMap {
 
 export const CATEGORIES_ACTION_TYPES = {
     SET_CATEGORIES: 'categories/SET_CATEGORIES',
+	SET_IS_SEARCH_OPEN: 'categories/SET_IS_SEARCH_OPEN',
 }

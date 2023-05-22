@@ -4,10 +4,13 @@ import { useMediaQuery } from "react-responsive";
 import { ReactComponent as CaptureLogo } from "../../assets/capture.svg";
 import CartIcon from "../CartIcon/CartIcon";
 import Cart from "../Cart/Cart";
+import SearchIcon from "../SearchIcon/SearchIcon";
+import Search from "../Search/Search";
 import MobileNavigation from "../MobileNavigation/MobileNavigation";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { selectCurrentUser } from "../../store/user/user.selector";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
+import { selectIsSearchOpen } from "../../store/categories/categories.selector";
 import {
 	NavigationContainer,
 	LeftSection,
@@ -27,10 +30,11 @@ export const DeviceSize = {
 	desktop: 2024,
 };
 
-const Navigation: FC = () => {
+const Navigation = () => {
 	const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 	const currentUser = useSelector(selectCurrentUser);
 	const isCartOpen = useSelector(selectIsCartOpen);
+	const isSearchOpen = useSelector(selectIsSearchOpen);
 
 	return (
 		<>
@@ -78,10 +82,12 @@ const Navigation: FC = () => {
 							<NavLink to="/auth">LOGIN</NavLink>
 						)
 					) : null}
+					{!isMobile && <SearchIcon />}
 					{!isMobile && <CartIcon />}
 					{isMobile && <MobileNavigation />}
 				</RightSection>
 				{isCartOpen && <Cart />}
+				{isSearchOpen && <Search />}
 			</NavigationContainer>
 		</>
 	);

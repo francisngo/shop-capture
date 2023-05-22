@@ -1,0 +1,90 @@
+[
+    {
+        "id": 1,
+        "sku": "ILCE7C/S",
+        "name": "Sony a7C Full-Frame",
+        "description": "The Alpha a7C is for creators who demand full-frame quality and performance, but also want a compact lightweight camera they can take anywhere and use for all types of still and video creation.",
+        "brand": "Sony",
+        "categories": ["cameras"],
+        "images": ["https://ik.imagekit.io/tdabmi2ex/sony-a7c-1.jpg", "https://ik.imagekit.io/tdabmi2ex/sony-a7c-2.jpg"],
+        "price": 1799,
+        "priceId": "price_1N9YDVGODvOv2ILSkp50eFII"
+    },
+    {
+        "id": 2,
+        "sku": "ILCE7M4/B",
+        "name": "Sony Alpha a7 IV",
+        "description": "The new Alpha 7 IV is an exceptional hybrid camera packed with outstanding still image quality and evolved video technology with advanced autofocus, enhanced operability and improved workflow capability.",
+        "brand": "Sony",
+        "categories": ["cameras"],
+        "images": ["https://ik.imagekit.io/tdabmi2ex/sony-a7iv.jpeg", "https://ik.imagekit.io/tdabmi2ex/sony-a7iv-2.jpeg"],
+        "price": 2498,
+        "priceId": "price_1N9YDzGODvOv2ILSXe31OwRN"
+    },
+    {
+        "id": 3,
+        "sku": "ILCE7RM4A/B",
+        "name": "Sony Alpha a7R IVA",
+        "description": "The Sony Alpha a7R IVA is the latest in a long line of extremely capable full-frame cameras that are known for their outstanding photos and video performance and versatility.",
+        "brand": "Sony",
+        "categories": ["cameras"],
+        "images": ["https://ik.imagekit.io/tdabmi2ex/sony-a7r-iv.jpeg", "https://ik.imagekit.io/tdabmi2ex/sony-a7r-iv-2.jpeg"],
+        "price": 3198,
+        "priceId": "price_1N9X9gGODvOv2ILSUEajyW25"
+    },
+    {
+        "id": 4,
+        "sku": "ILCE7RM5/B",
+        "name": "Sony Alpha a7R V",
+        "description": "Sony Alpha 7R V Full-frame Mirrorless Interchangeable Lens Camera combines Next-generation AF, 61MP image quality, spectacular 8K24p/4K60p movies, and advanced connectivity and workflow to create a higher level of imaging performance.",
+        "brand": "Sony",
+        "categories": ["cameras"],
+        "images": ["https://ik.imagekit.io/tdabmi2ex/sony-a7rv.jpeg", "https://ik.imagekit.io/tdabmi2ex/sony-a7rv-2.jpeg"],
+        "price": 3899,
+        "priceId": "price_1N9YECGODvOv2ILSdKin5mOq"
+    },
+    {
+        "id": 5,
+        "sku": "ILCE7RM5/B",
+        "name": "Sony Alpha a7S III",
+        "description": "With extreme full-frame movie performance including high sensitivity (expanded ISO up to 409600), 15-stop wide dynamic range, 4K 120p, fast and dependable autofocusing, and extra-strong image stabilization, the A7S III again raises the bar for movie makers and photographers.",
+        "brand": "Sony",
+        "categories": ["cameras"],
+        "images": ["https://ik.imagekit.io/tdabmi2ex/sony-a7siii.jpeg", "https://ik.imagekit.io/tdabmi2ex/sony-a7siii-2.jpeg"],
+        "price": 3498,
+        "priceId": "price_1N9YEQGODvOv2ILSDBZbpIaL"
+    },
+    {
+        "id": 6,
+        "sku": "ILCE9M2/B",
+        "name": "Sony Alpha a9 II",
+        "description": "The second generation of speed, the Sony Alpha a9 II takes the impressive feature-set of its predecessor and adds enhanced connectivity, a refined body design, and even quicker performance.",
+        "brand": "Sony",
+        "categories": ["cameras"],
+        "images": ["https://ik.imagekit.io/tdabmi2ex/sony-a9.jpeg", "https://ik.imagekit.io/tdabmi2ex/sony-a9-2.jpeg"],
+        "price": 4498,
+        "priceId": "price_1N9YEiGODvOv2ILSMA7cWcBa"
+    },
+    {
+        "id": 7,
+        "sku": "ILCE6600/B",
+        "name": "Sony Alpha a6600",
+        "description": "With an emphasis on speed and versatility, the Sony Alpha a6600 is a sleek-yet-fully-featured APS-C-format mirrorless camera well-suited for both stills and video.",
+        "brand": "Sony",
+        "categories": ["cameras"],
+        "images": ["https://ik.imagekit.io/tdabmi2ex/sony-a6600.jpeg", "https://ik.imagekit.io/tdabmi2ex/sony-a6600-2.jpeg"],
+        "price": 1398,
+        "priceId": "price_1N9YF3GODvOv2ILS1pmLxaxG"
+    },
+    {
+        "id": 8,
+        "sku": "ILCE-1/B",
+        "name": "Sony Alpha 1",
+        "description": "The most technologically advanced, innovative camera that Sony has ever released, the Alpha 1 combines high-resolution and high-speed performance at a level never previously reached.",
+        "brand": "Sony",
+        "categories": ["cameras"],
+        "images": ["https://ik.imagekit.io/tdabmi2ex/sony-alpha-1.jpeg", "https://ik.imagekit.io/tdabmi2ex/sony-alpha-1-2.jpeg"],
+        "price": 6498,
+        "priceId": "price_1N9YFEGODvOv2ILSfOWN8Pht"
+    }
+]
