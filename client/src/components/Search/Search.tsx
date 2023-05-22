@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import algoliasearch from "algoliasearch/lite";
+import algoliasearch, { SearchClient } from "algoliasearch/lite";
 import {
 	InstantSearch,
 	SearchBox,
@@ -16,9 +16,18 @@ import {
 	HitDetails,
 } from "./Search.styles";
 
-const searchClient = algoliasearch(
-	"Q6JEDBLP7A",
-	"3b642bf1640e07068c06fa801162514e"
+interface EnvVariables {
+	REACT_APP_ALGOLIA_APP_ID: string;
+	REACT_APP_ALGOLIA_API_KEY: string;
+}
+
+declare const process: {
+	env: EnvVariables;
+};
+
+const searchClient: SearchClient = algoliasearch(
+	process.env.REACT_APP_ALGOLIA_APP_ID,
+	process.env.REACT_APP_ALGOLIA_API_KEY
 );
 
 interface HitProps {

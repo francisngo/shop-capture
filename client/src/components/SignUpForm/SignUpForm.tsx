@@ -1,5 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { UserCredential, AuthError, AuthErrorCodes } from "firebase/auth";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 import {
