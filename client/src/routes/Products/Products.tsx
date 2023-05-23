@@ -21,7 +21,7 @@ const Products: FC = () => {
 	const { categoriesMap, loading } = useContext(CategoriesContext);
 	const products: CategoryItem[] = categoriesMap[category] || [];
 
-	const tempHide = true;
+	const tempHide = false;
 
 	return (
 		<ProductsContainer>

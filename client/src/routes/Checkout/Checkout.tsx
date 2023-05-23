@@ -64,7 +64,9 @@ const Checkout: FC = () => {
 				<CheckoutItem key={cartItem.id} cartItem={cartItem} />
 			))}
 			<Total>{`Total: $${cartTotal}`}</Total>
-			<Button onClick={handleCheckout}>Proceed To Checkout</Button>
+			<Button disabled={!cartItems.length} onClick={handleCheckout}>
+				Purchase Order
+			</Button>
 		</CartContainer>
 	);
 };

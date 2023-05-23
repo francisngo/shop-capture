@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	addItemToCart,
@@ -26,12 +26,17 @@ const CheckoutItem: FC<Props> = ({ cartItem }) => {
 	const { name, imageUrl, price, quantity } = cartItem;
 	const cartItems = useSelector(selectCartItems);
 
-	const clearItemFromCartHandler = () =>
+	const clearItemFromCartHandler = useCallback(() => {
 		dispatch(clearItemFromCart(cartItems, cartItem));
-	const addItemToCartHandler = () =>
+	}, [cartItems, cartItem, dispatch]);
+
+	const addItemToCartHandler = useCallback(() => {
 		dispatch(addItemToCart(cartItems, cartItem));
-	const removeItemToCartHandler = () =>
+	}, [cartItems, cartItem, dispatch]);
+
+	const removeItemToCartHandler = useCallback(() => {
 		dispatch(removeItemFromCart(cartItems, cartItem));
+	}, [cartItems, cartItem, dispatch]);
 
 	return (
 		<CheckoutItemContainer>
