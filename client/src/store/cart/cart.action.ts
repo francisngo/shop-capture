@@ -1,7 +1,7 @@
 import { CART_ACTION_TYPES, Product, CartItem } from "./cart.types";
 import { createAction } from "../../utils/reducer/reducer.utils";
 
-const addCartItem = (cartItems: CartItem[], productToAdd: Product): CartItem[] => {
+export const addCartItem = (cartItems: CartItem[], productToAdd: Product): CartItem[] => {
 	const existingCartItem = cartItems.find(
 		(cartItem) => cartItem.id === productToAdd.id
 	);
@@ -17,7 +17,7 @@ const addCartItem = (cartItems: CartItem[], productToAdd: Product): CartItem[] =
 	return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-const removeCartItem = (cartItems: CartItem[], productToRemove: Product): CartItem[] => {
+export const removeCartItem = (cartItems: CartItem[], productToRemove: Product): CartItem[] => {
 	const existingCartItem = cartItems.find(
 		(cartItem) => cartItem.id === productToRemove.id
 	);
@@ -35,7 +35,7 @@ const removeCartItem = (cartItems: CartItem[], productToRemove: Product): CartIt
 	);
 };
 
-const clearCartItem = (cartItems: CartItem[], productToClear: Product): CartItem[] =>
+export const clearCartItem = (cartItems: CartItem[], productToClear: Product): CartItem[] =>
 	cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
 
 export const getProductQuantity = (cartItems: CartItem[], item: Product): number => {
