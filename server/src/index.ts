@@ -1,20 +1,21 @@
-require('dotenv').config();
-const express = require("express");
-const morgan = require('morgan');
-const cors = require('cors');
-const http = require('http');
-const { ApolloServer } = require('@apollo/server');
-const { ApolloServerPluginDrainHttpServer } = require('@apollo/server/plugin/drainHttpServer')
-const { expressMiddleware } = require('@apollo/server/express4')
-const typeDefs = require('./schemas/categories.typeDefs');
-const resolvers = require('./resolvers/categories.resolver');
+import dotenv from 'dotenv'
+import express from "express";
+import morgan from 'morgan';
+import cors from 'cors';
+import http from 'http';
+import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import { expressMiddleware } from '@apollo/server/express4';
+import typeDefs from './schemas/categories.typeDefs';
+import resolvers from './resolvers/categories.resolver';
+import api from './routes/api'; 
+dotenv.config();
 
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(morgan("combined"));
 app.use(express.json());
 const httpServer = http.createServer(app);
-const api = require('./routes/api'); 
 
 (async () => {
     const server = new ApolloServer({

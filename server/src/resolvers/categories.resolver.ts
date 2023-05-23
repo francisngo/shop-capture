@@ -1,9 +1,8 @@
-const path = require('path');
-const admin = require('firebase-admin');
-const serviceAccount = path.resolve(__dirname, '../config/service-account.json');
+import admin from 'firebase-admin';
+import serviceAccount from '../config/service-account.json';
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount as admin.ServiceAccount)
 });
 const db = admin.firestore();
 
@@ -21,7 +20,7 @@ interface Category {
     items: [CategoryItem]
 }
 
-module.exports = {
+export default {
     Query: {
         categories: async () => {
             const snapshot = await db
@@ -31,7 +30,7 @@ module.exports = {
                 return doc.data()
             }) as Category[]
         },
-        category: async (_: any, { title }) => {
+        category: async (_: any, { title }: { title: string }) => {
             const snapshot = await db
                 .collection('categories')
                 .where('title', '==', title)
@@ -61,14 +60,14 @@ module.exports = {
             }
             return Array.from(products);
         },
-        product: async (_: any, { id }) => {
+        product: async (_: any, { id }: { id: number }) => {
             const snapshot = await db
                 .collection('categories')
                 .get();
             let product
             snapshot.docs.forEach(doc => {
                 const items = doc.data().items;
-                const matchingItem = items.find(item => item.id === id)
+                const matchingItem = items.find((item: CategoryItem) => item.id === id)
                 if (matchingItem) {
                     product = matchingItem;
                 }

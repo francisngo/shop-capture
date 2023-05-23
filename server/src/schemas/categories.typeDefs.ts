@@ -1,6 +1,6 @@
 const gql = require("graphql-tag");
 
-module.exports = gql`
+export default gql`
 	type CategoryItem {
 		id: Int
 		imageUrl: String

@@ -1,8 +1,9 @@
-require("dotenv").config();
-
+import dotenv from 'dotenv';
+import { Request, Response } from 'express';
+dotenv.config();
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 
-async function httpCreateCheckoutSession(req, res) {
+export async function httpCreateCheckoutSession(req: Request, res: Response) {
 	try {
 		const { products = [] } = req.body;
 		const session = await stripe.checkout.sessions.create({
@@ -22,7 +23,3 @@ async function httpCreateCheckoutSession(req, res) {
 		console.log(error);
 	}
 }
-
-module.exports = {
-	httpCreateCheckoutSession,
-};
