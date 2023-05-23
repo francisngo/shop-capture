@@ -1,0 +1,29 @@
+{
+  "name": "shop-capture",
+  "version": "1.0.0",
+  "description": "Capture is a marketplace for cameras, lenses, bags, microphones & more.",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm run install-server && npm run install-client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "npm run build --prefix client && npm start --prefix server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francisngo/shop-capture.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francisngo/shop-capture/issues"
+  },
+  "homepage": "https://github.com/francisngo/shop-capture#readme",
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
