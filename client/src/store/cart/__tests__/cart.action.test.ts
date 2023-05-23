@@ -29,7 +29,7 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
         const newCartItems = addCartItem(mockCartItems, productToAdd);
   
         expect(newCartItems).toEqual([
-          { id: 1, name: 'Product', quantity: 2 },
+          { id: 1, name: 'Product', quantity: 2, price: 1000 },
         ]);
       });
     });
@@ -50,7 +50,7 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
         const newCartItems = removeCartItem(updatedCartItems, productToRemove);
   
         expect(newCartItems).toEqual([
-          { id: 1, name: 'Product', quantity: 2 },
+          { id: 1, name: 'Product', quantity: 2, price: 1000 },
         ]);
       });
     });
