@@ -24,13 +24,16 @@ const Checkout: FC = () => {
 				price: cartItem.priceId,
 				quantity: cartItem.quantity,
 			}));
-			await fetch("http://localhost:4000/create-checkout-session", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ products }),
-			})
+			await fetch(
+				"http://localhost:4000/v1/checkout/create-checkout-session",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ products }),
+				}
+			)
 				.then((response) => response.json())
 				.then(
 					(response) =>
