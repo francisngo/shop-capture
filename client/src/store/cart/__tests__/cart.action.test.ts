@@ -11,11 +11,11 @@ import {
 import { CartItem, CART_ACTION_TYPES} from '../cart.types';
 
   describe('Cart actions', () => {
-    const mockCartItems: CartItem[] = [{ id: 1, name: 'Product', quantity: 1 }];
+    const mockCartItems: CartItem[] = [{ id: 1, name: 'Product', quantity: 1, price: 1000 }];
   
     describe('addCartItem', () => {
       it('should add a new item to the cart', () => {
-        const productToAdd = { id: 2, name: 'New Product' };
+        const productToAdd = { id: 2, name: 'New Product', price: 1000 };
         const newCartItems = addCartItem(mockCartItems, productToAdd);
   
         expect(newCartItems).toEqual([
@@ -25,7 +25,7 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
       });
   
       it('should increase the quantity of an existing item in the cart', () => {
-        const productToAdd = { id: 1, name: 'Product' };
+        const productToAdd = { id: 1, name: 'Product', price: 1000 };
         const newCartItems = addCartItem(mockCartItems, productToAdd);
   
         expect(newCartItems).toEqual([
@@ -36,16 +36,16 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
   
     describe('removeCartItem', () => {
       it('should remove an item from the cart', () => {
-        const productToRemove = { id: 1, name: 'Product' };
+        const productToRemove = { id: 1, name: 'Product', price: 1000 };
         const newCartItems = removeCartItem(mockCartItems, productToRemove);
   
         expect(newCartItems).toEqual([]);
       });
   
       it('should decrease the quantity of an existing item in the cart', () => {
-        const productToRemove = { id: 1, name: 'Product' };
+        const productToRemove = { id: 1, name: 'Product', price: 1000 };
         const updatedCartItems = [
-          { id: 1, name: 'Product', quantity: 3 },
+          { id: 1, name: 'Product', quantity: 3, price: 1000 },
         ];
         const newCartItems = removeCartItem(updatedCartItems, productToRemove);
   
@@ -57,7 +57,7 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
   
     describe('clearCartItem', () => {
       it('should clear an item from the cart', () => {
-        const productToClear = { id: 1, name: 'Product' };
+        const productToClear = { id: 1, name: 'Product', price: 1000 };
         const newCartItems = clearCartItem(mockCartItems, productToClear);
   
         expect(newCartItems).toEqual([]);
@@ -66,14 +66,14 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
   
     describe('getProductQuantity', () => {
       it('should return the quantity of a product in the cart', () => {
-        const item = { id: 1, name: 'Product' };
+        const item = { id: 1, name: 'Product', price: 1000 };
         const quantity = getProductQuantity(mockCartItems, item);
   
         expect(quantity).toBe(1);
       });
   
       it('should return 0 if the product is not in the cart', () => {
-        const item = { id: 2, name: 'Non-existent Product' };
+        const item = { id: 2, name: 'Non-existent Product', price: 1000 };
         const quantity = getProductQuantity(mockCartItems, item);
   
         expect(quantity).toBe(0);
@@ -94,7 +94,7 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
   
     describe('addItemToCart', () => {
       it('should create an action to add an item to the cart', () => {
-        const productToAdd = { id: 2, name: 'New Product' };
+        const productToAdd = { id: 2, name: 'New Product', price: 1000 };
         const action = addItemToCart(mockCartItems, productToAdd);
   
         expect(action).toEqual({
@@ -109,7 +109,7 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
   
     describe('removeItemFromCart', () => {
       it('should create an action to remove an item from the cart', () => {
-        const productToRemove = { id: 1, name: 'Product' };
+        const productToRemove = { id: 1, name: 'Product', price: 1000 };
         const action = removeItemFromCart(mockCartItems, productToRemove);
   
         expect(action).toEqual({
@@ -121,7 +121,7 @@ import { CartItem, CART_ACTION_TYPES} from '../cart.types';
   
     describe('clearItemFromCart', () => {
       it('should create an action to clear an item from the cart', () => {
-        const productToClear = { id: 1, name: 'Product' };
+        const productToClear = { id: 1, name: 'Product', price: 1000 };
         const action = clearItemFromCart(mockCartItems, productToClear);
   
         expect(action).toEqual({
