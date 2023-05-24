@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
-    "test:watch": "jest --watch",
     "build": "rimraf ./build && tsc",
     "watch": "npx nodemon",
-    "start": "npm run build && node build/index.js"
+    "start": "npm run build && node build/index.js",
+    "cluster": "pm2 start src/index.js -i max"
   },
   "keywords": [],
   "author": "",

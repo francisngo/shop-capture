@@ -25,7 +25,7 @@ const Checkout: FC = () => {
 				quantity: cartItem.quantity,
 			}));
 			await fetch(
-				"http://localhost:4000/v1/checkout/create-checkout-session",
+				`${process.env.REACT_APP_SERVER_URL}/v1/checkout/create-checkout-session`,
 				{
 					method: "POST",
 					headers: {
