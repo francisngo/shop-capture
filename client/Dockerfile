@@ -19,8 +19,8 @@ RUN npm run build
 # Set the environment variable for the API endpoint
 ENV REACT_APP_API_URL=http://localhost:4000
 
-# Expose port 80 to serve the app
-EXPOSE 80
+# Expose port 3000 to serve the app
+EXPOSE 3000
 
 # Start the server 
 CMD [ "npm", "start" ]

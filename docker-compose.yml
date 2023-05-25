@@ -1,14 +1,20 @@
 version: "3"
 services: 
   client:
+    container_name: 'shop-capture-client'
+    image: 'francisngo/shop-capture-client'
     build: 
       context: ./client
+      dockerfile: ./Dockerfile
     ports:
-      - 3000:80
+      - 3000:3000
     environment:
       - REACT_APP_API_URL=http://server:4000
   server:
+    container_name: 'shop-capture-server'
+    image: 'francisngo/shop-capture-server'
     build:
       context: ./server
+      dockerfile: ./Dockerfile
     ports:
       - 4000:4000
