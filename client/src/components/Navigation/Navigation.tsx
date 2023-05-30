@@ -19,7 +19,7 @@ import {
 	NavLinksContainer,
 	LinksWrapper,
 	LinkItem,
-	NavLink,
+	NavigationLink,
 	RightSection,
 } from "./Navigation.styles";
 
@@ -49,24 +49,24 @@ const Navigation: FC = () => {
 						<NavLinksContainer>
 							<LinksWrapper>
 								<LinkItem>
-									<NavLink to="/products/cameras">
+									<NavigationLink to="/products/cameras">
 										CAMERAS
-									</NavLink>
+									</NavigationLink>
 								</LinkItem>
 								<LinkItem>
-									<NavLink to="/products/lenses">
+									<NavigationLink to="/products/lenses">
 										LENSES
-									</NavLink>
+									</NavigationLink>
 								</LinkItem>
 								<LinkItem>
-									<NavLink to="/products/backpacks">
+									<NavigationLink to="/products/backpacks">
 										BACKPACKS
-									</NavLink>
+									</NavigationLink>
 								</LinkItem>
 								<LinkItem>
-									<NavLink to="/products/filters">
+									<NavigationLink to="/products/filters">
 										ACCESSORIES
-									</NavLink>
+									</NavigationLink>
 								</LinkItem>
 							</LinksWrapper>
 						</NavLinksContainer>
@@ -75,11 +75,11 @@ const Navigation: FC = () => {
 				<RightSection>
 					{!isMobile ? (
 						currentUser ? (
-							<NavLink as="span" onClick={signOutUser}>
+							<NavigationLink as="span" onClick={signOutUser}>
 								SIGN OUT
-							</NavLink>
+							</NavigationLink>
 						) : (
-							<NavLink to="/auth">LOGIN</NavLink>
+							<NavigationLink to="/auth">LOGIN</NavigationLink>
 						)
 					) : null}
 					{!isMobile && <SearchIcon />}

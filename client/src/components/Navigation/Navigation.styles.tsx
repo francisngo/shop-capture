@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const NavigationContainer = styled.div`
 	height: 70px;
@@ -9,6 +9,7 @@ export const NavigationContainer = styled.div`
 	justify-content: space-between;
 	margin-bottom: 20px;
 	padding: 20px 40px 0 40px;
+	border-bottom: 2px;
 `;
 
 export const LeftSection = styled.div`
@@ -59,10 +60,32 @@ export const RightSection = styled.div`
 	align-items: center;
 `;
 
-export const NavLink = styled(Link)`
-	padding: 10px 15px;
+export const NavigationLink = styled(NavLink)`
+	padding: 10px 5px;
 	cursor: pointer;
 	text-decoration: none;
 	color: inherit;
 	font-size: inherit;
+	position: relative;
+	margin: 0 15px;
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -2px;
+		width: 100%;
+		height: 2px;
+		background-color: black;
+		transform: scaleX(0);
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+	}
+
+	&:hover {
+		&::after {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+	}
 `;
