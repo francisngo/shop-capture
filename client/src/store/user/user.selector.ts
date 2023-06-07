@@ -1,4 +1,4 @@
 import { RootState } from '../store';
-import { UserState } from './user.reducer';
+import { UserData } from '../../utils/firebase/firebase.utils';
 
-export const selectCurrentUser = (state: RootState): UserState => state.user.currentUser
+export const selectCurrentUser = (state: RootState): UserData | null => state.user.currentUser
