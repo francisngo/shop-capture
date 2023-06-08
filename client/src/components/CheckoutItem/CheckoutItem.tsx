@@ -1,11 +1,10 @@
 import { FC, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
 	addItemToCart,
 	removeItemFromCart,
 	clearItemFromCart,
 } from "../../store/cart/cart.reducer";
-import { selectCartItems } from "../../store/cart/cart.selector";
 import { CartItem } from "../../store/cart/cart.reducer";
 import {
 	CheckoutItemContainer,
@@ -24,7 +23,6 @@ interface Props {
 const CheckoutItem: FC<Props> = ({ cartItem }) => {
 	const dispatch = useDispatch();
 	const { name, imageUrl, price, quantity } = cartItem;
-	const cartItems = useSelector(selectCartItems);
 
 	const clearItemFromCartHandler = useCallback(() => {
 		dispatch(clearItemFromCart(cartItem));
