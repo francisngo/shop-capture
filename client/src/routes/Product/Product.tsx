@@ -11,7 +11,7 @@ import {
 	addItemToCart,
 	removeItemFromCart,
 	getProductQuantity,
-} from "../../store/cart/cart.action";
+} from "../../store/cart/cart.reducer";
 import { selectCartItems } from "../../store/cart/cart.selector";
 import {
 	ProductContainer,
@@ -78,14 +78,13 @@ const Product: FC = () => {
 	}, [product, data]);
 
 	const addProductToCart = () => {
-		dispatch(addItemToCart(cartItems, product));
+		dispatch(addItemToCart(product));
 	};
 
 	const addItemToCartHandler = () => {
-		dispatch(addItemToCart(cartItems, product));
+		dispatch(addItemToCart(product));
 	};
-	const removeItemToCartHandler = () =>
-		dispatch(removeItemFromCart(cartItems, product));
+	const removeItemToCartHandler = () => dispatch(removeItemFromCart(product));
 
 	const { name, price } = product;
 

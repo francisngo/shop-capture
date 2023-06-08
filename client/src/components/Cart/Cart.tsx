@@ -7,8 +7,11 @@ import {
 	selectCartItems,
 	selectCartTotal,
 } from "../../store/cart/cart.selector";
-import { clearItemFromCart, setIsCartOpen } from "../../store/cart/cart.action";
-import { CartItem } from "../../store/cart/cart.types";
+import {
+	clearItemFromCart,
+	setIsCartOpen,
+} from "../../store/cart/cart.reducer";
+import { CartItem } from "../../store/cart/cart.reducer";
 import {
 	CartContainer,
 	CartItems,
@@ -33,7 +36,7 @@ const Cart: FC = () => {
 	};
 
 	const clearItemFromCartHandler = (cartItem: CartItem) =>
-		dispatch(clearItemFromCart(cartItems, cartItem));
+		dispatch(clearItemFromCart(cartItem));
 
 	return (
 		<CartContainer>

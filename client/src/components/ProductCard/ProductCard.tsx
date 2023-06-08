@@ -1,9 +1,8 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
-import { addItemToCart } from "../../store/cart/cart.action";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import { addItemToCart } from "../../store/cart/cart.reducer";
 import {
 	ProductCardContainer,
 	ImageContainer,
@@ -29,11 +28,10 @@ const ProductCard: FC<ProductCardProps> = ({
 	priceId,
 }) => {
 	const dispatch = useDispatch();
-	const cartItems = useSelector(selectCartItems);
 	const product = { id, imageUrl, altImg, name, price, priceId };
 
 	const addProductToCart = () => {
-		dispatch(addItemToCart(cartItems, product));
+		dispatch(addItemToCart(product));
 	};
 	return (
 		<ProductCardContainer>

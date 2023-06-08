@@ -6,7 +6,7 @@ import {
 	selectCartItems,
 	selectCartTotal,
 } from "../../store/cart/cart.selector";
-import { CartItem } from "../../store/cart/cart.types";
+import { CartItem } from "../../store/cart/cart.reducer";
 import {
 	CartContainer,
 	CartHeader,

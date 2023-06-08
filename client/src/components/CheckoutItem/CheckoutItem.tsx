@@ -4,9 +4,9 @@ import {
 	addItemToCart,
 	removeItemFromCart,
 	clearItemFromCart,
-} from "../../store/cart/cart.action";
+} from "../../store/cart/cart.reducer";
 import { selectCartItems } from "../../store/cart/cart.selector";
-import { CartItem } from "../../store/cart/cart.types";
+import { CartItem } from "../../store/cart/cart.reducer";
 import {
 	CheckoutItemContainer,
 	ImageContainer,
@@ -27,15 +27,15 @@ const CheckoutItem: FC<Props> = ({ cartItem }) => {
 	const cartItems = useSelector(selectCartItems);
 
 	const clearItemFromCartHandler = useCallback(() => {
-		dispatch(clearItemFromCart(cartItems, cartItem));
+		dispatch(clearItemFromCart(cartItem));
 	}, [cartItems, cartItem, dispatch]);
 
 	const addItemToCartHandler = useCallback(() => {
-		dispatch(addItemToCart(cartItems, cartItem));
+		dispatch(addItemToCart(cartItem));
 	}, [cartItems, cartItem, dispatch]);
 
 	const removeItemToCartHandler = useCallback(() => {
-		dispatch(removeItemFromCart(cartItems, cartItem));
+		dispatch(removeItemFromCart(cartItem));
 	}, [cartItems, cartItem, dispatch]);
 
 	return (
