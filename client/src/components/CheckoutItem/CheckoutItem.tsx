@@ -28,15 +28,15 @@ const CheckoutItem: FC<Props> = ({ cartItem }) => {
 
 	const clearItemFromCartHandler = useCallback(() => {
 		dispatch(clearItemFromCart(cartItem));
-	}, [cartItems, cartItem, dispatch]);
+	}, [cartItem, dispatch]);
 
 	const addItemToCartHandler = useCallback(() => {
 		dispatch(addItemToCart(cartItem));
-	}, [cartItems, cartItem, dispatch]);
+	}, [cartItem, dispatch]);
 
 	const removeItemToCartHandler = useCallback(() => {
 		dispatch(removeItemFromCart(cartItem));
-	}, [cartItems, cartItem, dispatch]);
+	}, [cartItem, dispatch]);
 
 	return (
 		<CheckoutItemContainer>
