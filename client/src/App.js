@@ -12,6 +12,7 @@ import {
 	onAuthStateChangedListener,
 	createUserDocumentFromAuth,
 } from "./utils/firebase/firebase.utils";
+import { fetchCategories } from "./store/categories/categories.reducer";
 import { setCurrentUser } from "./store/user/user.reducer";
 
 const App = () => {
@@ -25,6 +26,10 @@ const App = () => {
 			dispatch(setCurrentUser(user));
 		});
 		return unsubscribe;
+	}, [dispatch]);
+
+	useEffect(() => {
+		dispatch(fetchCategories());
 	}, [dispatch]);
 
 	const router = createBrowserRouter([

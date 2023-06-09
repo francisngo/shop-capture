@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Search from "@mui/icons-material/Search";
 import { SearchIconContainer } from "./SearchIcon.styles";
 import { selectIsSearchOpen } from "../../store/categories/categories.selector";
-import { setIsSearchOpen } from "../../store/categories/categories.action";
+import { setIsSearchOpen } from "../../store/categories/categories.reducer";
 
 const SearchIcon: FC = () => {
 	const dispatch = useDispatch();

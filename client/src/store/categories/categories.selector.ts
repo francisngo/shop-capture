@@ -1,23 +1,33 @@
 import { createSelector } from 'reselect';
 import { RootState } from '../store';
-import { CategoryItem, Category } from './categories.types';
+import { CategoryItem } from './categories.reducer';
 
 const selectCategoryReducer = (state: RootState) => state.categories;
 
 export const reselectCategories = createSelector(
     [selectCategoryReducer],
-    (categories) => categories.categories
+    (categories) => categories.categoriesMap
 )
 
 export const selectCategories = createSelector(
     [reselectCategories],
-    (categories) => 
-        categories.reduce((acc: { [key: string]: CategoryItem[]}, category: Category) => {
-            const { title, items } = category;
-            acc[title.toLowerCase()] = items;
-            return acc;
-        })
-)
+    (categoriesMap) => 
+        Object.entries(categoriesMap).reduce(
+            (
+                acc: { [key: string]: CategoryItem[] }, 
+                [title, items]
+            ) => {
+                acc[title.toLowerCase()] = items;
+                return acc;
+            },
+            {}
+        )
+);
+
+export const selectLoading = createSelector(
+    [selectCategoryReducer],
+    (categories) => categories.loading
+);
 
 export const selectIsSearchOpen = createSelector(
     [selectCategoryReducer],

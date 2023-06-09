@@ -1,11 +1,13 @@
-import { useContext, FC } from "react";
+import { FC } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Spinner from "../../components/Spinner/Spinner";
+import { CategoryItem } from "../../contexts/CategoriesContext";
 import {
-	CategoryItem,
-	CategoriesContext,
-} from "../../contexts/CategoriesContext";
+	selectCategories,
+	selectLoading,
+} from "../../store/categories/categories.selector";
 import {
 	ProductsContainer,
 	LeftContainer,
@@ -18,7 +20,8 @@ import {
 
 const Products: FC = () => {
 	const { category = "" } = useParams<{ category: string }>();
-	const { categoriesMap, loading } = useContext(CategoriesContext);
+	const categoriesMap = useSelector(selectCategories);
+	const loading = useSelector(selectLoading);
 	const products: CategoryItem[] = categoriesMap[category] || [];
 
 	const tempHide = false;

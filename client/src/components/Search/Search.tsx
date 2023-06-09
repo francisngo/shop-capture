@@ -8,7 +8,7 @@ import {
 	Hits,
 	useInstantSearch,
 } from "react-instantsearch-hooks-web";
-import { setIsSearchOpen } from "../../store/categories/categories.action";
+import { setIsSearchOpen } from "../../store/categories/categories.reducer";
 import {
 	SearchContainer,
 	SearchHits,
