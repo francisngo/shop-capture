@@ -2,6 +2,12 @@ import { useState, FC } from "react";
 import { useSelector } from "react-redux";
 import MenuToggle from "../MenuToggle/MenuToggle";
 import CartIcon from "../CartIcon/CartIcon";
+import {
+	ROUTE_CAMERAS,
+	ROUTE_LENSES,
+	ROUTE_BACKPACKS,
+	ROUTE_ACCESSORIES,
+} from "../../constants/routes";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { selectCurrentUser } from "../../store/user/user.selector";
 import {
@@ -28,22 +34,25 @@ const MobileNavigation: FC = () => {
 				<>
 					<LinksWrapper>
 						<LinkItem>
-							<NavLink onClick={toggleMenu} to="/shop/cameras">
+							<NavLink onClick={toggleMenu} to={ROUTE_CAMERAS}>
 								CAMERAS
 							</NavLink>
 						</LinkItem>
 						<LinkItem>
-							<NavLink onClick={toggleMenu} to="/shop/lenses">
+							<NavLink onClick={toggleMenu} to={ROUTE_LENSES}>
 								LENSES
 							</NavLink>
 						</LinkItem>
 						<LinkItem>
-							<NavLink onClick={toggleMenu} to="/shop/backpacks">
+							<NavLink onClick={toggleMenu} to={ROUTE_BACKPACKS}>
 								BACKPACKS
 							</NavLink>
 						</LinkItem>
 						<LinkItem>
-							<NavLink onClick={toggleMenu} to="/shop/filters">
+							<NavLink
+								onClick={toggleMenu}
+								to={ROUTE_ACCESSORIES}
+							>
 								ACCESSORIES
 							</NavLink>
 						</LinkItem>
