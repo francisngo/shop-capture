@@ -41,7 +41,7 @@ export const Button = styled.div`
 	right: 0;
 	margin: auto;
 	cursor: pointer;
-	border: none;
+	border: 2px solid black;
 	background-color: white;
 	text-transform: uppercase;
 	font-weight: 500;

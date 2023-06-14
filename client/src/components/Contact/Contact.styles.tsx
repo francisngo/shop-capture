@@ -31,16 +31,20 @@ export const Wrapper = styled.div`
 
 export const Input = styled.input`
 	padding: 10px;
-	border: none;
-	border-radius: 5px 0 0 5px;
+	border: 2px solid black;
 `;
 
 export const Button = styled.button`
 	padding: 10px;
 	color: white;
 	background: black;
-	border-radius: 0 5px 5px 0;
-	border: none;
+	border: 2px solid black;
+	cursor: pointer;
+
+	&:hover {
+		background-color: white;
+		color: black;
+	}
 `;
 
 export const IconsContainer = styled.div`

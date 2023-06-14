@@ -2,14 +2,12 @@ import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
 export const NavigationContainer = styled.div`
-	height: 70px;
+	height: 80px;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 20px;
-	padding: 20px 40px 0 40px;
-	border-bottom: 2px;
+	padding: 20px 40px;
 `;
 
 export const LeftSection = styled.div`

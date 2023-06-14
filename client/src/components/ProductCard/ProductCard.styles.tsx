@@ -4,7 +4,7 @@ export const ProductCardContainer = styled.div`
 	width: 330px;
 	display: flex;
 	flex-direction: column;
-	padding: 10px;
+	border: 2px solid black;
 	-webkit-box-shadow: 0px 0px 7px -5px rgba(0, 0, 0, 0.5);
 	box-shadow: 0px 0px 7px -5px rgba(0, 0, 0, 0.5);
 `;
