@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CartContainer = styled.div`
 	position: absolute;
 	width: 350px;
-	top: 90px;
+	top: 80px;
 	right: 0;
 	z-index: 5;
 	background-color: white;

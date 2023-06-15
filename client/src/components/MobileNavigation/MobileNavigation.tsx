@@ -1,7 +1,6 @@
 import { useState, FC } from "react";
 import { useSelector } from "react-redux";
 import MenuToggle from "../MenuToggle/MenuToggle";
-import CartIcon from "../CartIcon/CartIcon";
 import {
 	ROUTE_CAMERAS,
 	ROUTE_LENSES,
@@ -66,9 +65,6 @@ const MobileNavigation: FC = () => {
 									LOGIN
 								</NavLink>
 							)}
-						</LinkItem>
-						<LinkItem>
-							<CartIcon />
 						</LinkItem>
 					</LinksWrapper>
 				</>

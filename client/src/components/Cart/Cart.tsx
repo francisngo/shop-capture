@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, RefObject } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
@@ -24,7 +24,11 @@ import {
 	ButtonContainer,
 } from "./Cart.styles";
 
-const Cart: FC = () => {
+interface CartProps {
+	cartRef?: RefObject<HTMLDivElement>;
+}
+
+const Cart: FC<CartProps> = ({ cartRef }) => {
 	const dispatch = useDispatch();
 	const cartItems = useSelector(selectCartItems);
 	const cartTotal = useSelector(selectCartTotal);
@@ -39,7 +43,7 @@ const Cart: FC = () => {
 		dispatch(clearItemFromCart(cartItem));
 
 	return (
-		<CartContainer>
+		<CartContainer ref={cartRef}>
 			<CartItems>
 				{cartItems.length ? (
 					(cartItems as CartItem[]).map((item: CartItem) => (

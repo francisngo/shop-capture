@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, RefObject } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import algoliasearch, { SearchClient } from "algoliasearch/lite";
@@ -77,9 +77,13 @@ const Hit = ({ hit }: HitProps) => {
 	);
 };
 
-const Search: FC = () => {
+interface SearchProps {
+	searchRef?: RefObject<HTMLDivElement>;
+}
+
+const Search: FC<SearchProps> = ({ searchRef }) => {
 	return (
-		<SearchContainer>
+		<SearchContainer ref={searchRef}>
 			<InstantSearch searchClient={searchClient} indexName="Products">
 				<div className="search-box">
 					<SearchBox placeholder="Search products..." autoFocus />
