@@ -88,70 +88,70 @@ const Product: FC = () => {
 
 	const { name, price } = product;
 
+	if (loading) {
+		return (
+			<SpinnerContainer>
+				<Spinner />
+			</SpinnerContainer>
+		);
+	}
+
 	return (
 		<ProductContainer>
-			{loading ? (
-				<SpinnerContainer>
-					<Spinner />
-				</SpinnerContainer>
-			) : (
-				<>
-					<LeftContainer>
-						<ImagesContainer>
-							<img
-								src={images[0]}
-								alt=""
-								onClick={(e) => setSelectedImage(0)}
-							/>
-							<img
-								src={images[1]}
-								alt=""
-								onClick={(e) => setSelectedImage(1)}
-							/>
-						</ImagesContainer>
-					</LeftContainer>
-					<MainImage>
-						<img src={images[selectedImage]} alt="" />
-					</MainImage>
-					<RightContainer>
-						<h1>{name}</h1>
-						<Price>${price}</Price>
-						<p>Description</p>
-						<Quantity>
-							<button onClick={removeItemToCartHandler}>-</button>
-							{getProductQuantity(cartItems, product)}
-							<button onClick={addItemToCartHandler}>+</button>
-						</Quantity>
-						<ButtonsContainer>
-							<Button onClick={addProductToCart}>
-								<AddShoppingCartIcon />
-								ADD TO CART
-							</Button>
-						</ButtonsContainer>
-						<LinksContainer>
-							<Item>
-								<FavoriteBorderIcon /> ADD TO WISH LIST
-							</Item>
-							<Item>
-								<BalanceIcon /> ADD TO COMPARE
-							</Item>
-						</LinksContainer>
-						<Info>
-							<span>Vendor</span>
-							<span>Product Type</span>
-							<span>Tag</span>
-						</Info>
-						<hr />
-						<Info>
-							<span>DESCRIPTION</span>
-							<hr />
-							<span>ADDITIONAL INFORMATION</span>
-							<hr />
-							<span>FAQ</span>
-						</Info>
-					</RightContainer>
-				</>
-			)}
+			<LeftContainer>
+				<ImagesContainer>
+					<img
+						src={images[0]}
+						alt=""
+						onClick={(e) => setSelectedImage(0)}
+					/>
+					<img
+						src={images[1]}
+						alt=""
+						onClick={(e) => setSelectedImage(1)}
+					/>
+				</ImagesContainer>
+			</LeftContainer>
+			<MainImage>
+				<img src={images[selectedImage]} alt="" />
+			</MainImage>
+			<RightContainer>
+				<h1>{name}</h1>
+				<Price>${price}</Price>
+				<p>Description</p>
+				<Quantity>
+					<button onClick={removeItemToCartHandler}>-</button>
+					{getProductQuantity(cartItems, product)}
+					<button onClick={addItemToCartHandler}>+</button>
+				</Quantity>
+				<ButtonsContainer>
+					<Button onClick={addProductToCart}>
+						<AddShoppingCartIcon />
+						ADD TO CART
+					</Button>
+				</ButtonsContainer>
+				<LinksContainer>
+					<Item>
+						<FavoriteBorderIcon /> ADD TO WISH LIST
+					</Item>
+					<Item>
+						<BalanceIcon /> ADD TO COMPARE
+					</Item>
+				</LinksContainer>
+				<Info>
+					<span>Vendor</span>
+					<span>Product Type</span>
+					<span>Tag</span>
+				</Info>
+				<hr />
+				<Info>
+					<span>DESCRIPTION</span>
+					<hr />
+					<span>ADDITIONAL INFORMATION</span>
+					<hr />
+					<span>FAQ</span>
+				</Info>
+			</RightContainer>
 		</ProductContainer>
 	);
 };

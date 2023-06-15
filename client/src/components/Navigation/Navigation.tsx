@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import SearchIcon from "@mui/icons-material/Search";
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
@@ -49,13 +49,8 @@ const Navigation: FC = () => {
 	const handleSearchToggle = () => toggleSearchOpen(!isSearchOpen);
 	const handleCartToggle = () => toggleCartOpen(!isCartOpen);
 
-	const searchRef = useOutsideClick(() => {
-		toggleSearchOpen(false);
-	});
-
-	const cartRef = useOutsideClick(() => {
-		toggleCartOpen(false);
-	});
+	const searchRef = useOutsideClick(() => toggleSearchOpen(false));
+	const cartRef = useOutsideClick(() => toggleCartOpen(false));
 
 	return (
 		<>
