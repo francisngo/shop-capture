@@ -13,7 +13,7 @@ const useOutsideClick = (callback: () => void): RefObject<HTMLDivElement> => {
         return () => {
             document.removeEventListener('mousedown', handleClick);
         };
-    }, [ref]);
+    }, [ref, callback]);
 
     return ref;
 };
