@@ -30,16 +30,6 @@ const searchClient: SearchClient = algoliasearch(
 	process.env.REACT_APP_ALGOLIA_API_KEY
 );
 
-interface HitProps {
-	hit: {
-		id: number;
-		images: string[];
-		name: string;
-		categories: string[];
-		price: number;
-	};
-}
-
 interface EmptyQueryBoundaryProps {
 	children: ReactNode;
 	fallback: any;
@@ -55,6 +45,16 @@ const EmptyQueryBoundary = ({
 	}
 	return children;
 };
+
+interface HitProps {
+	hit: {
+		id: number;
+		images: string[];
+		name: string;
+		categories: string[];
+		price: number;
+	};
+}
 
 const Hit = ({ hit }: HitProps) => {
 	const dispatch = useDispatch();

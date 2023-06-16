@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import { useSelector } from "react-redux";
+import { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import SearchIcon from "@mui/icons-material/Search";
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
@@ -15,7 +15,12 @@ import {
 } from "../../constants/routes";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { selectCurrentUser } from "../../store/user/user.selector";
-import { selectCartCount } from "../../store/cart/cart.selector";
+import {
+	selectCartCount,
+	selectIsCartOpen,
+} from "../../store/cart/cart.selector";
+import { selectIsSearchOpen } from "../../store/categories/categories.selector";
+import { setIsSearchOpen } from "../../store/categories/categories.reducer";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import {
 	NavigationContainer,
@@ -31,6 +36,7 @@ import {
 	CartIconContainer,
 	ItemCount,
 } from "./Navigation.styles";
+import { setIsCartOpen } from "../../store/cart/cart.reducer";
 
 export const DeviceSize = {
 	mobile: 768,
@@ -40,17 +46,18 @@ export const DeviceSize = {
 };
 
 const Navigation: FC = () => {
+	const dispatch = useDispatch();
 	const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 	const currentUser = useSelector(selectCurrentUser);
 	const cartCount = useSelector(selectCartCount);
-	const [isSearchOpen, toggleSearchOpen] = useState(false);
-	const [isCartOpen, toggleCartOpen] = useState(false);
+	const isCartOpen = useSelector(selectIsCartOpen);
+	const isSearchOpen = useSelector(selectIsSearchOpen);
 
-	const handleSearchToggle = () => toggleSearchOpen(!isSearchOpen);
-	const handleCartToggle = () => toggleCartOpen(!isCartOpen);
+	const handleSearchToggle = () => dispatch(setIsSearchOpen(!isSearchOpen));
+	const handleCartToggle = () => dispatch(setIsCartOpen(!isCartOpen));
 
-	const searchRef = useOutsideClick(() => toggleSearchOpen(false));
-	const cartRef = useOutsideClick(() => toggleCartOpen(false));
+	const searchRef = useOutsideClick(() => dispatch(setIsSearchOpen(false)));
+	const cartRef = useOutsideClick(() => dispatch(setIsCartOpen(false)));
 
 	return (
 		<>
