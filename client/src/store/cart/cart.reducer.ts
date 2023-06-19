@@ -80,17 +80,14 @@ export const cartSlice = createSlice({
 		addItemToCart: (state, action) => {
 			state.cartItems = addCartItem(state.cartItems, action.payload);
 			setLocalStorage('cart', state.cartItems);
-			// localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 		removeItemFromCart: (state, action) => {
 			state.cartItems = removeCartItem(state.cartItems, action.payload);
 			setLocalStorage('cart', state.cartItems);
-			// localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 		clearItemFromCart: (state, action) => {
 			state.cartItems = clearCartItem(state.cartItems, action.payload);
 			setLocalStorage('cart', state.cartItems);
-			// localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 	},
 });

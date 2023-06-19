@@ -1,13 +1,21 @@
-import { FC } from 'react';
-import ImageSlider from "../../components/ImageSlider/ImageSlider";
-import FeaturedProducts from "../../components/FeaturedProducts/FeaturedProducts";
-import CategoryGrid from "../../components/CategoryGrid/CategoryGrid";
+import { FC, lazy, Suspense } from "react";
+import Spinner from "../../components/Spinner/Spinner";
+
+const ImageSlider = lazy(
+	() => import("../../components/ImageSlider/ImageSlider")
+);
+const FeaturedProducts = lazy(
+	() => import("../../components/FeaturedProducts/FeaturedProducts")
+);
+const CategoryGrid = lazy(
+	() => import("../../components/CategoryGrid/CategoryGrid")
+);
 
 interface ImageData {
 	id: number;
 	src: string;
 	name: string;
-  }
+}
 
 const IMAGE_DATA: ImageData[] = [
 	{
@@ -40,9 +48,11 @@ const IMAGE_DATA: ImageData[] = [
 const Home: FC = () => {
 	return (
 		<div className="home-container">
-			<ImageSlider images={IMAGE_DATA} />
-			<FeaturedProducts />
-			<CategoryGrid />
+			<Suspense fallback={<Spinner />}>
+				<ImageSlider images={IMAGE_DATA} />
+				<FeaturedProducts />
+				<CategoryGrid />
+			</Suspense>
 		</div>
 	);
 };
