@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { setLocalStorage } from '../../utils/localStorage/localStorage.utils';
 
 export interface Product {
 	id: number;
@@ -55,8 +56,8 @@ export const getProductQuantity = (cartItems: CartItem[], item: Product): number
     return product ? product.quantity : 0;
 };
 
-const localStorageCart: any[] = localStorage.getItem('capture-cart') !== null
-  ? JSON.parse(localStorage.getItem('capture-cart') || '')
+const localStorageCart: any[] = localStorage.getItem('cart') !== null
+  ? JSON.parse(localStorage.getItem('cart') || '')
   : [];
 
 export interface CartState {
@@ -78,15 +79,18 @@ export const cartSlice = createSlice({
 		},
 		addItemToCart: (state, action) => {
 			state.cartItems = addCartItem(state.cartItems, action.payload);
-			localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
+			setLocalStorage('cart', state.cartItems);
+			// localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 		removeItemFromCart: (state, action) => {
 			state.cartItems = removeCartItem(state.cartItems, action.payload);
-			localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
+			setLocalStorage('cart', state.cartItems);
+			// localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 		clearItemFromCart: (state, action) => {
 			state.cartItems = clearCartItem(state.cartItems, action.payload);
-			localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
+			setLocalStorage('cart', state.cartItems);
+			// localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 	},
 });
