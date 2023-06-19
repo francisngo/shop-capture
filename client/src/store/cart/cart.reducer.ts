@@ -55,6 +55,10 @@ export const getProductQuantity = (cartItems: CartItem[], item: Product): number
     return product ? product.quantity : 0;
 };
 
+const localStorageCart: any[] = localStorage.getItem('capture-cart') !== null
+  ? JSON.parse(localStorage.getItem('capture-cart') || '')
+  : [];
+
 export interface CartState {
 	isCartOpen: boolean;
 	cartItems: CartItem[];
@@ -62,7 +66,7 @@ export interface CartState {
 
 const CART_INITIAL_STATE: CartState = {
 	isCartOpen: false,
-	cartItems: [],
+	cartItems: localStorageCart,
 };
 
 export const cartSlice = createSlice({
@@ -74,12 +78,15 @@ export const cartSlice = createSlice({
 		},
 		addItemToCart: (state, action) => {
 			state.cartItems = addCartItem(state.cartItems, action.payload);
+			localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 		removeItemFromCart: (state, action) => {
 			state.cartItems = removeCartItem(state.cartItems, action.payload);
+			localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 		clearItemFromCart: (state, action) => {
 			state.cartItems = clearCartItem(state.cartItems, action.payload);
+			localStorage.setItem('capture-cart', JSON.stringify(state.cartItems.map(item => item)))
 		},
 	},
 });
